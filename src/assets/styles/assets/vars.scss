@@ -1,0 +1,117 @@
+$default-font: "SangBleu Kingdom",
+	sans-serif;
+$default-font2: "Fixel Variable",
+	sans-serif;
+
+$mc: #fff;
+$mc2: #FF554C;
+$mc3: #E5DF06;
+$mc4: #4F90B6;
+$gray: rgb(135, 135, 151);
+$text: #22223E;
+$wc: #fff;
+$bc: #000;
+$bc2: #000;
+$light: #fff;
+$dark: #000;
+$gold: #CFA46E;
+$gold2: #CFA46E;
+
+$color-white: rgba(239,236,228,1);
+$color-green: rgba(82,94,82,1);
+$color-graphit: rgba(57,64,73,1);
+
+$main: rgba(255,127,66,1);
+$white: rgba(248,247,243,1);
+$blue: rgba(109,172,226,1);
+$blue-2: rgba(2,115,207,1);
+$blue-3: rgba(1,70,187,1);
+$darkblue: rgba(3,60,113,1);
+$text: rgba(3,60,113,0.800);
+
+
+.color-main {
+	color: rgba(255,127,66,1);
+}
+.color-white {
+	color: rgba(248,247,243,1);
+}
+.color-fff {
+	color: rgba(255,255,255,1);
+}
+.color-blue {
+	color: rgba(109,172,226,1);
+}
+.color-blue-2 {
+	color: rgba(2,115,207,1);
+}
+.color-blue-3 {
+	color: rgba(1,70,187,1);
+}
+.color-darkblue {
+	color: #033c71;
+}
+.color-text {
+	color: rgba(3,60,113,0.800);
+}
+.color-text07 {
+	color: rgba(3,60,113,0.700);
+}
+
+
+:root {
+	--main: rgba(255,127,66,1);
+	--white: rgba(248,247,243,1);
+	--blue: rgba(109,172,226,1);
+	--blue-2: rgba(2,115,207,1);
+	--blue-3: rgba(1,70,187,1);
+	--darkblue: rgba(3,60,113,1);
+	--text: rgba(3,60,113,0.800);
+}
+
+:root {
+	--in: cubic-bezier(0.13, 0.81, 0.23, 0.96);
+	--header-h: 90px;
+	--logo-w: 155px;
+	--sliceFigure: 239px;
+	--sliceFigure-big: 541px;
+	--page-side-fields: 40px;
+	--section-v-offset: 100px;
+	--button-color: #001A58;
+}
+
+@media screen and (max-width: 1620px) {
+	:root {
+		--header-h: 86px;
+		--logo-w: 120px;
+		--sliceFigure-big: 362px;
+		--section-v-offset: 100px;
+	}
+}
+
+@media screen and (max-width:1024px){
+	:root {
+		--page-side-fields: 20px;
+		--section-v-offset: 100px;
+	}
+}
+
+
+@media screen and (max-width: 1024px) {
+	:root {
+		--header-h: 100px;
+		--logo-w: 90px;
+		--sliceFigure-big: 44px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	:root {
+		--header-h: 66px;
+		--section-v-offset: 50px;
+		--page-side-fields: 16px;
+	}
+}
+
+
+@import './font-vars';

@@ -1,0 +1,43 @@
+.button {
+    --pad: 6px;
+    --color: #190C04;
+    --transition: all 0.3s ease-in-out;
+    position: relative;
+    padding: 24px 22px;
+    color: var(--color);
+
+    font-family: $default-font;
+    font-size: pxWidthInVw(18);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+    background: #FF7F42;
+    box-shadow: 0px 4px 32px 0px rgba(255, 116, 43, 0.32);
+    transition: var(--transition);
+    @media screen and (max-width:767px){
+        font-size: 16px;
+        padding: 19px 22px;
+    }
+    &::before {
+        content: '';
+        position: absolute;
+        width: calc(100% - var(--pad) * 2);
+        height: calc(100% - var(--pad) * 2);
+        left: var(--pad);
+        top: var(--pad);
+        border: 1px solid var(--color);
+        pointer-events: none;
+        transition: var(--transition);
+    }
+    &:hover {
+        background-color: #FF742B;
+    }
+    &:active {
+        background-color: #FF610D;
+    }
+    &:disabled {
+        opacity: 0.4;
+        pointer-events: none;
+    }
+}

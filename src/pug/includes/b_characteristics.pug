@@ -1,0 +1,33 @@
+-
+  var list = [
+          { icon: "./assets/images/characteristics/icons/property 1.svg", label: "Клас", value: "клубний будинок" },
+          { icon: "./assets/images/characteristics/icons/residential 1.svg", label: "Кількість будинків", value: "2" },
+          { icon: "./assets/images/characteristics/icons/build 1.svg", label: "Технологія будівництва", value: "Монолітно-каркасна" },
+          { icon: "./assets/images/characteristics/icons/brickwall 1.svg", label: "Стіни", value: "Цегла" },
+          { icon: "./assets/images/characteristics/icons/measure 1.svg", label: "Висота стелі", value: "3 м" },
+          { icon: "./assets/images/characteristics/icons/house (1) 1.svg", label: "Територія", value: "Закрита від авто та сторонніх" },
+          { icon: "./assets/images/characteristics/icons/cityscape 1.svg", label: "Поверховість", value: "3-6" },
+          { icon: "./assets/images/characteristics/icons/blueprint 1.svg", label: "Кількість апартаментів", value: "98" },
+          { icon: "./assets/images/characteristics/icons/thermal 1.svg", label: "Утеплення", value: "Мінеральна вата" },
+          { icon: "./assets/images/characteristics/icons/radiator 1.svg", label: "Опалення", value: "Автономне в будинку" },
+          { icon: "./assets/images/characteristics/icons/parking 1.svg", label: "Паркінг", value: "Підземний" }
+        ]
+.characteristics(id="characteristics")
+  .container
+    .characteristics__content
+      .d-fz-50.color-darkblue.text-uppercase.characteristics__title.mob-fz-29 Характеристики
+      .characteristics__list
+        each characteristic in list
+          .characteristics__list-item
+            img(src=characteristic.icon, alt="", srcset="")
+            div.d-fz-14.line-h-120.color-text.mob-fz-12= characteristic.label
+            div.d-fz-18.line-h-120.color-darkblue.mob-fz-16= characteristic.value
+      .characteristics__img1
+        .characteristics__img1-wrap
+          img(src="./assets/images/characteristics/img1.jpg", alt="", srcset="" loading="lazy")
+      .characteristics__img2
+        .characteristics__img2-wrap
+          img(src="./assets/images/characteristics/img2.jpg", alt="", srcset="" loading="lazy")
+      .characteristics__img3
+        .characteristics__img3-wrap
+          img(src="./assets/images/characteristics/img3.jpg", alt="", srcset="" loading="lazy")

@@ -1,0 +1,62 @@
+.button2 {
+    --transition: all 0.3s ease-in-out;
+    --color: var(--darkblue);
+    padding: 11px 32px;
+    background-color: var(--white);
+    color: var(--color);
+    font-size: pxWidthInVw(16);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    font-family: $default-font;
+    line-height: 150%;
+    transition: var(--transition);
+    text-decoration: none;
+    box-shadow: 0px 6px 12px 0px rgba(0, 0, 0, 0.04);
+    justify-content: center;
+    @include to(767px){
+        font-size: 16px;
+    }
+    &--blue {
+        background-color: var(--blue-3);
+        color: var(--white);
+        [fill] {
+            fill: var(--white);
+        }
+    }
+    &--smaller {
+        font-size: 14px;
+    }
+    [fill] {
+        transition: var(--transition);
+    }
+    &:hover {
+        background-color: #0146BB;
+        color: var(--white);
+        [fill] {
+            fill: var(--white);
+        }
+    }
+    &--blue:hover {
+        background-color: var(--white);
+        color: var(--blue-3);
+        [fill] {
+            fill: var(--blue-3);
+        }
+    }
+    &:active {
+        background-color: var(--darkblue);
+        color: var(--white);
+        [fill] {
+            fill: var(--white);
+        }
+    }
+    &:disabled {
+        opacity: 0.4;
+        pointer-events: none;
+    }
+}

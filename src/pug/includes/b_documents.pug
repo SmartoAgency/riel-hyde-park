@@ -1,0 +1,39 @@
+.documents(id="documents")
+  .container
+    .documents__title.d-fz-60.color-darkblue.text-uppercase.mob-fz-32 Документи
+    .documents__list
+      .swiper-container(data-documents-slider)
+        .swiper-wrapper
+          .swiper-slide
+            a(target="_blank" href="https://static.riel.ua/project-documents-pdf/1690441532.pdf").document.color-text.default-font2.d-fz-14
+              .document__img
+                .document__img-wrap
+                  img(src="./assets/images/documents/1690441532.jpg", alt="" loading="lazy")
+              .document__text Дозвіл на виконання будівельних робіт
+          .swiper-slide
+            a(target="_blank" href="https://static.riel.ua/project-documents-pdf/1692103357.PDF").document.color-text.default-font2.d-fz-14
+              .document__img
+                .document__img-wrap
+                  img(src="./assets/images/documents/1692103357.jpg", alt="" loading="lazy")
+              .document__text Витяг з Державного реєстру речових прав на нерухоме майно
+          .swiper-slide
+            a(target="_blank" href="https://static.riel.ua/project-documents-pdf/1692103392.pdf").document.color-text.default-font2.d-fz-14
+              .document__img
+                .document__img-wrap
+                  img(src="./assets/images/documents/1692103392.jpg", alt="" loading="lazy")
+              .document__text Договір оренди землі
+          .swiper-slide
+            a(target="_blank" href="https://static.riel.ua/project-documents-pdf/1692103442.pdf").document.color-text.default-font2.d-fz-14
+              .document__img
+                .document__img-wrap
+                  img(src="./assets/images/documents/1692103442.jpg", alt="" loading="lazy")
+              .document__text Енергетичний сертифікат будівлі
+        .documents__nav.show-on-mobile
+          <svg data-documents-slider-prev width="43" height="42" viewBox="0 0 43 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.5 21.0098L27.5 10.6175V31.4021L9.5 21.0098Z" fill="#033C71"/>
+            <path d="M31.5 3.68848V38.3311L1.49902 21.0098L31.5 3.68848Z" stroke="#033C71"/>
+          </svg>
+          <svg data-documents-slider-next width="43" height="42" viewBox="0 0 43 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M33.5 21.0098L15.5 10.6175V31.4021L33.5 21.0098Z" fill="#033C71"/>
+            <path d="M11.5 3.68848V38.3311L41.501 21.0098L11.5 3.68848Z" stroke="#033C71"/>
+          </svg>

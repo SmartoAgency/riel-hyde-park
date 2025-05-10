@@ -1,0 +1,54 @@
+.news(id="news")
+  .container
+    .news__content
+      .news__title.d-fz-50.color-darkblue.text-uppercase.mob-fz-32 Акції та новини
+      .news-card1.color-fff
+        .d-fz-28.line-h-115.mob-fz-24.mob-line-h-140 Hyde Park успішно пройшов зиму: всі системи працюють бездоганно
+        .d-fz-16.line-h-145.mob-fz-14.mob-line-h-140 Hyde Park - це не просто житло, це гарантія безпеки
+      .news-card2.d-fz-42.line-h-115.color-fff.mob-fz-24.mob-line-h-140
+        img(src="./assets/images/news/news-card2.jpg", alt="" loading="lazy").news-card2__bg
+        .news-card2__text Інженерні служби проводять тестування басейнів у Hyde Park
+      button(type="button" data-news-reveal-mobile).button2.show-on-mobile
+        span Показати більше
+        <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2.88012 5.20703L6.68345 9.01037C7.13262 9.45953 7.86762 9.45953 8.31678 9.01037L12.1201 5.20703" stroke="#033C71" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+
+        
+      .news-card3.color-fff(data-news-hidden-on-mobile)
+        .d-fz-23.line-h-115.mob-fz-24.mob-line-h-14 Акція! при оформлені з 50% предоплатую, ви отримуєте знижку 
+        .d-fz-42.line-h-115.mob-fz-24.mob-line-h-14 -4%
+      .news-card4.d-fz-42.line-h-115.color-darkblue.mob-fz-24.mob-line-h-14(data-news-hidden-on-mobile)
+        | Продумана інфраструктура та вишуканість у Hyde Park
+      .news__image1
+        .news__image1-wrap
+          img(src="./assets/images/news/terms-payment-image.jpg", alt="" loading="lazy")
+      .news__terms-payment.color-darkblue
+        div.d-fz-50.text-uppercase.news__terms-payment-title.mob-fz-32 Умови оплати
+        ul.line-h-90.d-fz-26.mob-fz-16.mob-line-h-140
+          li Початковий внесок від 10% вартості
+          li Решта суми прив’язка до курсу долара США
+          li Розтермінування до 12 місяців
+      .news__other-promotions.color-darkblue
+        .news__other-promotions-title.d-fz-50.text-uppercase.mob-fz-32 ДОДАТКОВІ ЗНИЖКИ
+        .news__other-promotions-subtitle.default-font2.d-fz-24.line-h-120.mob-fz-16 Знижки діють для Військовослужбовців (усі задіяні структури) та їхніх сімей, Медпрацівників та їхніх сімей, Переселенців із зони бойових дій
+        ul 
+          li
+            .d-fz-24.line-h-95.mob-fz-18 Умова
+            .default-font2.color-text07 Знижка надається за будь-якого першого внеску
+          li
+            .d-fz-24.line-h-95.mob-fz-18 Військовослужбовці
+            .default-font2.color-text07 Якщо перебувають у зоні бойових дій — знижка 5%
+            .default-font2.color-text07 Якщо не перебувають у зоні бойових дій — знижка 3%
+          li
+            .d-fz-24.line-h-95.mob-fz-18 Медпрацівники
+            .default-font2.color-text07 Якщо перебувають у зоні бойових дій — знижка 5%
+            .default-font2.color-text07 Якщо не перебувають у зоні бойових дій — знижка 3%
+          li
+            .d-fz-24.line-h-95.mob-fz-18 Переселенці із зони бойових дій
+            .default-font2.color-text07 — Знижка 5%
+      .news__image2
+        button(type="button").button
+          span ОТРИМАТИ ПЕРСОНАЛЬНИЙ ПРОРАХУНОК
+        .news__image2-wrap
+          img(src="./assets/images/news/image2.jpg", alt="" loading="lazy")

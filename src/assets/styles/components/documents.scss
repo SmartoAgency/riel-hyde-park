@@ -1,0 +1,52 @@
+.documents {
+    background-color: #fff;
+    padding-bottom: var(--section-v-offset);
+    &__title {
+        margin-bottom: 40px;
+        @include to(767px){
+            margin-bottom: 24px;
+        }
+    }
+    &__nav {
+        display: flex;
+        justify-content: center;align-items: center;
+        width: 100%;
+        margin-top: 24px;
+        svg~svg {
+            margin-left: 24px;
+        }
+    }
+}
+
+.document {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 24px;
+    text-decoration: none;
+    &__img {
+        width: 100%;
+        border-radius: 8px; 
+        overflow: hidden;
+        &-wrap {
+            position: relative;
+            padding-bottom: 143.333%;
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+    }
+    &__text {
+        text-align: center;
+    }
+
+    
+
+}

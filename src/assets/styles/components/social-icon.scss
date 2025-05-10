@@ -1,0 +1,15 @@
+.social-icon {
+    background: #FFF;
+    display: flex;
+    padding: 14px;
+    align-items: flex-start;
+    gap: 10px;
+    width: max-content;
+    &--lightblue {
+        background: #DDEDFA;
+    }
+    svg {
+        width: 24px;
+        height: 24px;
+    }
+}

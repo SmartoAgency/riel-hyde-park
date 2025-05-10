@@ -1,0 +1,31 @@
+.advantages(id="advantages")
+  .container 
+    .advantages__title.color-darkblue.d-fz-50.text-uppercase.mob-fz-32 Переваги
+    .advantages__buttons
+      button(type="button" data-advantage-tab="Roztashuvannya").button3.active
+        span Розташування
+      button(type="button" data-advantage-tab="ArkhitekturneRishennya").button3  
+        span Архітектурне рішення
+      button(type="button" data-advantage-tab="Infrastruktura").button3  
+        span Інфраструктура
+      button(type="button" data-advantage-tab="Parking").button3  
+        span Паркінг
+      button(type="button" data-advantage-tab="Bezpeka").button3  
+        span Безпека
+      button(type="button" data-advantage-tab="Enerhonezalezhnist").button3  
+        span Енергонезалежність
+    .advantages__tabs
+      .advantages__tab.color-text.d-fz-18.line-h-160.default-font2.mob-fz-14(data-advantage-tab-container="Roztashuvannya")
+        include ../includes/b_advanrages_tabs/tab_location.pug
+      .advantages__tab.color-text.d-fz-18.line-h-160.default-font2.mob-fz-14(data-advantage-tab-container="ArkhitekturneRishennya")
+        include ../includes/b_advanrages_tabs/tab_acrhi.pug
+      .advantages__tab.color-text.d-fz-18.line-h-160.default-font2.mob-fz-14(data-advantage-tab-container="Infrastruktura")
+        include ../includes/b_advanrages_tabs/tab_infra.pug
+      .advantages__tab.color-text.d-fz-18.line-h-160.default-font2.mob-fz-14(data-advantage-tab-container="Parking")
+        include ../includes/b_advanrages_tabs/tab_parking.pug
+      .advantages__tab.d-fz-18.line-h-160.color-darkblue.default-font2.mob-fz-14(data-advantage-tab-container="Bezpeka")
+        include ../includes/b_advanrages_tabs/tab_safety.pug
+      .advantages__tab.d-fz-18.line-h-160.color-darkblue.default-font2.mob-fz-14(data-advantage-tab-container="Enerhonezalezhnist")
+        include ../includes/b_advanrages_tabs/tab_energy.pug
+    button(type="button" data-callback-popup-open).button
+      span Отримати консультацію

@@ -1,0 +1,39 @@
+.gallery(id="gallery")
+  .container
+    .gallery__title.d-fz-50.color-darkblue.text-uppercase.mob-fz-32 Галерея
+    .gallery__buttons(style="display: none;")
+      button(type="button" data-gallery-filter-button="territoriya").button3 Territoriya
+      button(type="button" data-gallery-filter-button="rozvagy").button3 Rozvagy
+      button(type="button" data-gallery-filter-button="hall").button3 Хол
+      button(type="button" data-gallery-filter-button="zhytlovyi_poverh").button3 Житловий поверх
+      button(type="button" data-gallery-filter-button="parking").button3 Паркінг
+      button(type="button" data-gallery-filter-button="ukrytia").button3 Укриття
+    .swiper-container(data-gallery-slider)
+      .gallery-navigation
+        <svg data-gallery-slider-prev width="64" height="65" viewBox="0 0 64 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M24 32.3066L48 18.4502V46.163L24 32.3066Z" fill="white"/>
+          <path d="M47.5 5.45898V59.1543L0.999023 32.3066L47.5 5.45898Z" stroke="white"/>
+        </svg>
+        <svg data-gallery-slider-next width="64" height="65" viewBox="0 0 64 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M40 32.3066L16 18.4502V46.163L40 32.3066Z" fill="white"/>
+          <path d="M16.5 5.45898V59.1543L63.001 32.3066L16.5 5.45898Z" stroke="white"/>
+        </svg>
+      .swiper-wrapper
+        .swiper-slide
+          img(loading="lazy" src="./assets/images/gallery/image1.jpg", alt="", srcset="")
+        .swiper-slide
+          img(loading="lazy" src="./assets/images/gallery/image1.jpg", alt="", srcset="")
+        .swiper-slide
+          img(loading="lazy" src="./assets/images/gallery/image1.jpg", alt="", srcset="")
+        .swiper-slide
+          img(loading="lazy" src="./assets/images/gallery/image1.jpg", alt="", srcset="")
+        .swiper-slide
+          img(loading="lazy" src="./assets/images/gallery/image1.jpg", alt="", srcset="")
+        .swiper-slide
+          img(loading="lazy" src="./assets/images/gallery/image1.jpg", alt="", srcset="")
+        .swiper-slide
+          img(loading="lazy" src="./assets/images/gallery/image1.jpg", alt="", srcset="")
+        .swiper-slide
+          img(loading="lazy" src="./assets/images/gallery/image1.jpg", alt="", srcset="")
+    button(type="button" data-callback-popup-open).button
+      span Отримати консультацію

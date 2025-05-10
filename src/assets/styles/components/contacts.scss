@@ -1,0 +1,81 @@
+.contacts {
+    background-color: #fff;
+    padding-top: var(--section-v-offset);
+    padding-bottom: var(--section-v-offset);
+    &__content {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    &__title {
+        margin-bottom: 32px;
+        @include to(767px){
+            margin-bottom: 24px;
+        }
+    }
+    &__subtitle {
+        margin-top: 32px;
+        margin-bottom: 24px;
+        max-width: 359px;
+        @include to(767px){
+            width: 100%;
+        }
+    }
+    &__text {
+        width: calc(100% / 12 * 4);
+        @include to(767px){
+            width: 100%;
+            margin-bottom: 24px;
+            .button2 {
+                width: 100%;
+            }
+        }
+    }
+    &__img {
+        width: calc(100% / 12 * 7);
+        @include to(767px){
+            width: 100%;
+        }
+        margin-left: auto;
+        &-wrap {
+            position: relative;
+            padding-bottom: 71%;
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        &-title {
+            position: absolute;
+            z-index: 2;
+            left: 24px;
+            top: 34px;
+            @include to(767px){
+                left: 22px;
+                top: 16px;
+            }
+        }
+    }
+    &__label {
+        text-decoration: none;
+        background-color: #EFF8FF;
+        padding: 8px 12px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        @media screen and (max-width:1320px){
+            align-items: center;
+        }
+        svg {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+        }
+    }
+    &__label~&__label {
+        margin-top: 16px;
+    }
+}

@@ -1,0 +1,70 @@
+.advantages {
+    padding-top: calc(var(--section-v-offset) * 1.27);
+    padding-bottom: var(--section-v-offset);
+    background-color: #fff;
+    @media screen and (max-width:767px){
+        padding-top: var(--section-v-offset);
+    }
+    .button {
+        width: 100%;
+    }
+    &__title {
+        margin-bottom: 40px;
+        @media screen and (max-width:767px){
+            margin-bottom: 24px;
+        }
+    }
+    &__buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap:12px;
+        margin-bottom: 40px;
+        @media screen and (max-width:767px){
+            margin-bottom: 16px;
+        }
+    }
+    &__tab {
+        display: none;
+        &.active {
+            display: block;
+        }
+        img {
+            margin-top: 40px;
+        }
+        p~p {
+            margin-top: 0.7em;
+        }
+        p {
+            @include from(768px){
+                padding-right: pxWidthInVw(385);
+            }
+        }
+        li {
+            position: relative;
+            padding-left: 22px;
+            @include from(768px){
+                padding-right: pxWidthInVw(385);
+            }
+            &:before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0.45em;
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background-color: var(--main);
+                background: var(--blue);
+                border: 1px solid var(--white);
+            }
+        }
+        li~li {
+            margin-top: 12px;
+        }
+    }
+    .button {
+        @media screen and (max-width:767px){
+            font-size: 14px;
+        }
+    }
+}
