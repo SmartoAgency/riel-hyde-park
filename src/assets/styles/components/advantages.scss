@@ -37,21 +37,21 @@
             display: block;
         }
 
-        img {
+        &>img {
             margin-top: 40px;
         }
 
-        p~p {
+        &> p~p {
             margin-top: 0.7em;
         }
 
-        p {
+        &>p {
             @include from(768px) {
                 padding-right: pxWidthInVw(385);
             }
         }
 
-        li {
+        &>ul li {
             position: relative;
             padding-left: 22px;
 
@@ -79,6 +79,7 @@
 
         .map {
             height: 70vh;
+            width: 100%;
         }
     }
 
