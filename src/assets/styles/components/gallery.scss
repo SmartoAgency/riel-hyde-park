@@ -4,17 +4,21 @@
     background-color: #fff;
     max-width: 100vw;
     overflow: hidden;
+
     .container {
         // border-left: 1px solid red;
         // border-right: 1px solid red;
     }
+
     .swiper-container {
         overflow: visible;
         margin-bottom: 46px;
         user-select: none;
-        @include to(767px){
+
+        @include to(767px) {
             margin-bottom: 24px;
         }
+
         .gallery-navigation {
             position: absolute;
             top: 50%;
@@ -27,30 +31,49 @@
             z-index: 2;
             padding-left: pxWidthInVw(362);
             padding-right: pxWidthInVw(362);
-            @media screen and (max-width:767px){
-                padding-left: 12px;padding-right: 12px;
+
+            @media screen and (max-width:767px) {
+                padding-left: 12px;
+                padding-right: 12px;
             }
+
             svg {
                 pointer-events: all;
                 cursor: pointer;
-                @media screen and (max-width:767px){
+
+                @media screen and (max-width:767px) {
                     width: 42px;
                     height: 42px;
                 }
             }
         }
     }
+
     .swiper-slide-active {
-        // width: pxWidthInVw(689);
+        // width: ;
+
+
         height: 659px;
-        @media screen and (max-width:767px){
+
+
+
+
+        @media screen and (max-width:767px) {
+
             height: 100vw;
         }
+
+        // @media screen and (min-width:768px) {
+
+        //     width: pxWidthInVw(900) !important;
+        // }
     }
+
     .swiper-slide:not(.swiper-slide-active) {
         // width: pxWidthInVw(315);
         height: 659px;
-        @media screen and (max-width:767px){
+
+        @media screen and (max-width:767px) {
             height: 100vw;
         }
     }
@@ -58,16 +81,21 @@
     .swiper-slide {
         transition: 0.35s cubic-bezier(0.13, 0.75, 0.85, 0.96);
         transform-origin: center center;
-        @include from(768px){
+
+
+        @include from(768px) {
             padding-left: 15px;
             padding-right: 15px;
+            width: 200px
         }
+
         img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
     }
+
     &__buttons {
         display: flex;
         flex-wrap: wrap;
@@ -75,20 +103,46 @@
         gap: 12px;
         margin-bottom: 40px;
     }
+
     &__title {
         margin-bottom: 40px;
-        @media screen and (max-width:767px){
+
+        @media screen and (max-width:767px) {
             margin-bottom: 24px;
         }
     }
+
     .button {
         width: pxWidthInVw(650);
         margin-left: auto;
         margin-right: auto;
         display: block;
-        @include to(767px){
+
+        @include to(767px) {
             width: 100%;
             font-size: 14px;
+        }
+    }
+}
+
+[data-gallery-slider-next],
+[data-gallery-slider-prev],
+[data-slides-slider-next],
+[data-slides-slider-prev],
+[data-construction-slider-next],
+[data-construction-slider-prev] {
+    path {
+        transition: all 0.3s ease-in-out;
+    }
+
+    &:hover path {
+        &:first-child {
+            fill: rgba(3, 60, 113, 1);
+        }
+
+        &:nth-child(2) {
+
+            stroke: rgba(3, 60, 113, 1);
         }
     }
 }

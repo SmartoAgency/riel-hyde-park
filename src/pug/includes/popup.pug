@@ -23,7 +23,7 @@ include ./p_popup-form-planning.pug
     .popup-content__text
       h2.d-fz-30.color-darkblue.line-h-140.mob-fz-21 Замовте дзвінок
       p.d-fz-30.color-text.line-h-140.mob-fz-21 і наш фахівець проконсультує вас з усіх питань
-      form(data-popup-form)
+      form(data-popup-form data-lenis-prevent)
         .form-field.form-field-input(data-field-input data-field-name data-status="field--inactive").first-offset
           input(type='text' name="name" placeholder="Ваше ім’я:").form-field__input
           .input-message(data-input-message)

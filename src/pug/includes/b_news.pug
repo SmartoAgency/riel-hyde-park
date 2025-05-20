@@ -2,12 +2,12 @@
   .container
     .news__content
       .news__title.d-fz-50.color-darkblue.text-uppercase.mob-fz-32 Акції та новини
-      .news-card1.color-fff
-        .d-fz-28.line-h-115.mob-fz-24.mob-line-h-140 Hyde Park успішно пройшов зиму: всі системи працюють бездоганно
-        .d-fz-16.line-h-145.mob-fz-14.mob-line-h-140 Hyde Park - це не просто житло, це гарантія безпеки
-      .news-card2.d-fz-42.line-h-115.color-fff.mob-fz-24.mob-line-h-140
+      a(href="https://riel.ua/news/klubnii-budinok-hyde-park-v-sekciyi-a-1-1-trivaye-montazh-vikonnikh-konstrukcii" target="_blank").news-card1.color-fff.news-link
+        .d-fz-28.line-h-115.mob-fz-24.mob-line-h-140 Клубний будинок Hyde Park: в секції А-1.1 триває монтаж віконних конструкцій
+        .d-fz-16.line-h-145.mob-fz-14.mob-line-h-140 Паралельно продовжується монтаж черепиці на даху та завершено оздоблення вентиляційних коминів.
+      a(href="https://riel.ua/news/klubnii-budinok-hyde-park-v-sekciyi-a-1-1-zaversheno-ceglyanu-kladku-stin" target="_blank").news-card2.d-fz-42.line-h-115.color-fff.mob-fz-24.mob-line-h-140.news-link
         img(src="./assets/images/news/news-card2.jpg", alt="" loading="lazy").news-card2__bg
-        .news-card2__text Інженерні служби проводять тестування басейнів у Hyde Park
+        .news-card2__text Клубний будинок Hyde Park: в секції А-1.1 завершено цегляну кладку стін
       button(type="button" data-news-reveal-mobile).button2.show-on-mobile
         span Показати більше
         <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -15,11 +15,11 @@
         </svg>
 
         
-      .news-card3.color-fff(data-news-hidden-on-mobile)
-        .d-fz-23.line-h-115.mob-fz-24.mob-line-h-14 Акція! при оформлені з 50% предоплатую, ви отримуєте знижку 
-        .d-fz-42.line-h-115.mob-fz-24.mob-line-h-14 -4%
-      .news-card4.d-fz-42.line-h-115.color-darkblue.mob-fz-24.mob-line-h-14(data-news-hidden-on-mobile)
-        | Продумана інфраструктура та вишуканість у Hyde Park
+      a(href="https://riel.ua/news/klubnii-budinok-hyde-park-v-sekciyi-a-1-1-trivaye-vlashtuvannya-shatrovikh-dakhiv" target="_blank").news-card3.color-fff(data-news-hidden-on-mobile).news-link
+        .d-fz-23.line-h-115.mob-fz-24.mob-line-h-14 Клубний будинок Hyde Park: в секції А-1.1 триває влаштування шатрових дахів
+        .d-fz-42.line-h-115.mob-fz-24.mob-line-h-14 
+      a(href="https://riel.ua/news/klubnii-budinok-hyde-park-v-sekciyi-a-1-1-trivaye-muruvannya-stin" target="_blank").news-card4.d-fz-42.line-h-115.color-darkblue.mob-fz-24.mob-line-h-14(data-news-hidden-on-mobile).news-link
+        | Клубний будинок Hyde Park: в секції А-1.1 триває мурування стін
       .news__image1
         .news__image1-wrap
           img(src="./assets/images/news/terms-payment-image.jpg", alt="" loading="lazy")
@@ -48,7 +48,7 @@
             .d-fz-24.line-h-95.mob-fz-18 Переселенці із зони бойових дій
             .default-font2.color-text07 — Знижка 5%
       .news__image2
-        button(type="button").button
+        button(type="button" data-popup-form-planning-open).button
           span ОТРИМАТИ ПЕРСОНАЛЬНИЙ ПРОРАХУНОК
         .news__image2-wrap
           img(src="./assets/images/news/image2.jpg", alt="" loading="lazy")

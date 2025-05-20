@@ -1,13 +1,14 @@
 .gallery(id="gallery")
   .container
     .gallery__title.d-fz-50.color-darkblue.text-uppercase.mob-fz-32 Галерея
-    .gallery__buttons(style="display: none;")
-      button(type="button" data-gallery-filter-button="territoriya").button3 Territoriya
-      button(type="button" data-gallery-filter-button="rozvagy").button3 Rozvagy
+    .gallery__buttons()
+      button(type="button" data-gallery-filter-button="territoriya").button3 Територія
+      button(type="button" data-gallery-filter-button="rozvagy").button3 Розваги
       button(type="button" data-gallery-filter-button="hall").button3 Хол
       button(type="button" data-gallery-filter-button="zhytlovyi_poverh").button3 Житловий поверх
       button(type="button" data-gallery-filter-button="parking").button3 Паркінг
       button(type="button" data-gallery-filter-button="ukrytia").button3 Укриття
+      button(type="button" data-gallery-filter-button="interier").button3 Інтер'єр
     .swiper-container(data-gallery-slider)
       .gallery-navigation
         <svg data-gallery-slider-prev width="64" height="65" viewBox="0 0 64 65" fill="none" xmlns="http://www.w3.org/2000/svg">

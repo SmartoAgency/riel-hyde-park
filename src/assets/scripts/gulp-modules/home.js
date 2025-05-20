@@ -6,19 +6,21 @@ function init() {
       nextEl: document.querySelector('[data-next]'),
       prevEl: document.querySelector('[data-prev]'),
     },
+    allowTouchMove: false,
     preloadImages: false,
     lazy: true,
     speed: 400,
     watchSlidesVisibility: true,
     on: {
-      init: (e) => {
-        document.querySelector('[data-total]').innerHTML = document.querySelectorAll('.slide').length - 2;
+      init: e => {
+        document.querySelector('[data-total]').innerHTML =
+          document.querySelectorAll('.slide').length - 2;
         document.querySelector('[data-current]').innerHTML = e.activeIndex + 1;
       },
     },
   });
 
-  slider.on('activeIndexChange', (obj) => {
+  slider.on('activeIndexChange', obj => {
     document.querySelector('[data-current]').innerHTML = obj.realIndex + 1;
   });
 }

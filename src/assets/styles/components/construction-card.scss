@@ -6,10 +6,12 @@
         font-family: $default-font2;
         font-size: 14px;
         color: var(--darkblue);
-        @include to(767px){
+
+        @include to(767px) {
             font-size: 12px;
             margin-bottom: 12px;
         }
+
         &:before {
             content: '';
             display: block;
@@ -19,10 +21,12 @@
             margin-right: 24px;
         }
     }
+
     &__image {
         &-wrap {
             position: relative;
             padding-bottom: 100%;
+
             img {
                 position: absolute;
                 top: 0;
@@ -33,6 +37,7 @@
             }
         }
     }
+
     &__video-play {
         position: absolute;
         top: 50%;

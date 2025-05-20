@@ -3,6 +3,7 @@
   padding-bottom: 60px;
   overflow: hidden;
   position: relative;
+
   &__bg {
     position: absolute;
     z-index: -1;
@@ -12,13 +13,15 @@
     left: 40%;
     transform: translateY(60%);
     overflow: hidden;
-    @include to(767px){
+
+    @include to(767px) {
       left: 0;
       transform: none;
       width: 200vw;
       height: 200vw;
       transform: translate(-50%, 50%);
     }
+
     img {
       width: 100%;
       height: 100%;
@@ -28,10 +31,12 @@
       top: 0;
     }
   }
+
   &__content {
     @include row-flex;
     align-items: flex-start;
   }
+
   &__group-info {
     @include size(4);
     @include shift-left(0);
@@ -42,13 +47,16 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    @include to(767px){
+
+    @include to(767px) {
       margin-bottom: 24px;
     }
+
     img {
       margin-bottom: 32px;
     }
   }
+
   .social-list {
     display: flex;
     flex-wrap: wrap;
@@ -57,12 +65,14 @@
     @include size-xs(12);
     @include shift-xs(0);
     gap: 12px;
-    @include to(767px){
+
+    @include to(767px) {
       margin-top: 24px;
       justify-content: space-between;
       margin-bottom: 24px;
     }
   }
+
   &__group-links {
     display: flex;
     flex-direction: column;
@@ -73,15 +83,26 @@
     @include shift(0);
     @include size-xs(12);
     @include shift-xs(0);
+
     a {
       text-decoration: none;
+      transition: color 0.3s ease-in-out;
+
+      @include from (768px) {
+        &:hover {
+          color: $main;
+          text-decoration: underline;
+        }
+      }
     }
   }
+
   &__link-icon {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     text-decoration: none;
+
     svg {
       margin-right: 8px;
       flex-shrink: 0;
@@ -92,14 +113,16 @@
     margin-top: 24px;
   }
 
-  
+
   &__bottom-logo {
     margin-top: pxInVh(161);
     margin-top: 12px;
-    @include to(767px){
+
+    @include to(767px) {
       transform: translateX(-10vw);
     }
   }
+
   &__bottom-list {
     @include size(12);
     @include shift(0);
@@ -109,12 +132,14 @@
     justify-content: center;
     align-items: center;
     gap: 24px;
-    @include to(767px){
+
+    @include to(767px) {
       flex-direction: column;
       align-items: flex-start;
       justify-content: center;
       gap: 4px;
     }
+
     a {
       text-decoration: none;
     }

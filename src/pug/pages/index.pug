@@ -8,23 +8,23 @@ block variable
     var plannings = [
       {
         title: 'Студія',
-        area: '25',
-        price: '1 700 000',
+        area: '30',
+        price: '97 000',
         img: './assets/images/plannings/studio.jpg',
         dataset: 'rooms-studio'
       },
       {
         title: '1-кімнатне',
-        area: '32',
-        price: '2 200 000',
+        area: '35',
+        price: '110 000',
         img: './assets/images/plannings/1.jpg',
         dataset: 'rooms-1-bedroom'
         
       },
       {
         title: '2-кімнатне',
-        area: '52',
-        price: '3 200 000',
+        area: '70',
+        price: '196 000',
         img: './assets/images/plannings/2.jpg',
         dataset: 'rooms-2-bedroom'
       }
@@ -106,7 +106,7 @@ block content
           p.default-font2.d-fz-21.mob-fz-18 Hyde Park з'явився з розуміння справжньої цінності відновлюючого простору. Ми створили резиденцію, де wellness став основою концепції.
           p.default-font2.d-fz-21.mob-fz-18  Інфраструктура, природа і архітектура існують у гармонії та наповнюють енергією. 
           p.default-font2.d-fz-21.mob-fz-18  Віддалік від міського шуму та поруч із парком — ми спроєктували середовище для тих, хто цінує баланс у житті.
-          button(type="button").button2.show-on-desktop
+          a(href="#advantages").button2.show-on-desktop
             span Показати на мапі
             <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12.0281 5.42909C11.4156 2.73409 9.06481 1.52075 6.99981 1.52075C6.99981 1.52075 6.99981 1.52075 6.99398 1.52075C4.93481 1.52075 2.57814 2.72825 1.96564 5.42325C1.28314 8.43325 3.12648 10.9824 4.79481 12.5866C5.41314 13.1816 6.20648 13.4791 6.99981 13.4791C7.79314 13.4791 8.58648 13.1816 9.19898 12.5866C10.8673 10.9824 12.7106 8.43909 12.0281 5.42909ZM6.99981 8.35159C5.98481 8.35159 5.16231 7.52909 5.16231 6.51409C5.16231 5.49909 5.98481 4.67659 6.99981 4.67659C8.01481 4.67659 8.83731 5.49909 8.83731 6.51409C8.83731 7.52909 8.01481 8.35159 6.99981 8.35159Z" fill="#033C71"/>
@@ -121,7 +121,7 @@ block content
           .about__info-item
             div.d-fz-34.f-italic.mob-fz-21 Здача
             div.default-font2.d-fz-21.mob-fz-18 1 квартал 2027 року
-        button(type="button").button2.show-on-mobile
+        a(href="#advantages").button2.show-on-mobile
             span Показати на мапі
             <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12.0281 5.42909C11.4156 2.73409 9.06481 1.52075 6.99981 1.52075C6.99981 1.52075 6.99981 1.52075 6.99398 1.52075C4.93481 1.52075 2.57814 2.72825 1.96564 5.42325C1.28314 8.43325 3.12648 10.9824 4.79481 12.5866C5.41314 13.1816 6.20648 13.4791 6.99981 13.4791C7.79314 13.4791 8.58648 13.1816 9.19898 12.5866C10.8673 10.9824 12.7106 8.43909 12.0281 5.42909ZM6.99981 8.35159C5.98481 8.35159 5.16231 7.52909 5.16231 6.51409C5.16231 5.49909 5.98481 4.67659 6.99981 4.67659C8.01481 4.67659 8.83731 5.49909 8.83731 6.51409C8.83731 7.52909 8.01481 8.35159 6.99981 8.35159Z" fill="#033C71"/>
@@ -141,17 +141,17 @@ block content
                 img(src=val.img, alt="", srcset="" loading="lazy")
             .flat-card__bottom
               div.d-fz-14.line-h-150 Ціна від
-              div.d-fz-21.line-h-150.mob-fz-18 #{val.price} грн
-            button(type="button" data-popup-form-planning-open data-plannings-popup-checkbox=val.dataset).button2 
-              span.mob-fz-14 детальніше
+              div.d-fz-21.line-h-150.mob-fz-18 $ #{val.price} 
+            button(type="button" data-popup-form-planning-open data-plannings-popup-checkbox=val.dataset).button2.white-bg
+              span.mob-fz-14 Отримати консультацію
         button(type="button" data-popup-form-planning-open).button
           span Підібрати помешкання
   .slides
     .container
       .slides__content
         .slides__title.d-fz-70.line-h-110.color-white
-          span.mob-fz-32.text-uppercase.mob-line-height-normal Уявіть, як може <br> виглядати
-          span.mob-line-height-normal.mob-fz-36.f-italic.mob-line-height-normal &nbsp;ваше помешкання
+          span.mob-fz-32.text-uppercase.mob-line-height-normal Уявіть, як може  <br> виглядати
+          span.mob-line-height-normal.mob-fz-36.f-italic.mob-line-height-normal &nbsp;ваше життя в Hyde Park
         .swiper-container(data-slides-slider)
           .slides__nav
             <svg data-slides-slider-prev width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -163,22 +163,27 @@ block content
               <path d="M16.5 5.15234V58.8477L63.001 32L16.5 5.15234Z" stroke="white"/>
             </svg>
           .swiper-wrapper
-            each val in [0,1,2]
-              .swiper-slide
-                .slides__img
-                  img(src="./assets/images/slides-img.jpg", alt="", srcset="" loading="lazy")
-  .slides.slides--darkblue
-    .container
-      .slides__content
-        .slides__title.d-fz-70.line-h-110.color-white.mob-fz-32
-          span.text-uppercase Вид
-          span.f-italic &nbsp;з вікна
-        .swiper-container
-          .swiper-wrapper
-            each val in [0,1,2]
-              .swiper-slide
-                .slides__img
-                  img(src="./assets/images/slides-img.jpg", alt="", srcset="" loading="lazy")
+            .swiper-slide
+              .slides__img
+                <iframe title="VR Tour" height="100%" width="100%" frameborder="0" data-src="https://vrnet.io/view5.16a/?model=ua/riel/HydePark/ext-p3"   allowfullscreen></iframe>
+            .swiper-slide
+              .slides__img
+                <iframe title="VR Tour" height="100%" width="100%" frameborder="0" data-src="https://ua-maps3d.vrnet.io/view5.16a/?model=ua/riel/HydePark/ext-p2"  allowfullscreen></iframe>
+            .swiper-slide
+              .slides__img
+                <iframe title="VR Tour" height="100%" width="100%" frameborder="0" data-src="https://vrnet.io/view5.16a/?model=ua/riel/HydePark/mzk"  allowfullscreen></iframe>
+  //- .slides.slides--darkblue
+  //-   .container
+  //-     .slides__content
+  //-       .slides__title.d-fz-70.line-h-110.color-white.mob-fz-32
+  //-         span.text-uppercase Вид
+  //-         span.f-italic &nbsp;з вікна
+  //-       .swiper-container
+  //-         .swiper-wrapper
+  //-           each val in [0,1,2]
+  //-             .swiper-slide
+  //-               .slides__img
+  //-                 img(src="./assets/images/slides-img.jpg", alt="", srcset="" loading="lazy")
   .wellness(id="wellness")
     .container
       .wellness__content

@@ -1,9 +1,11 @@
 .news {
     padding-bottom: var(--section-v-offset);
     background-color: #fff;
+
     &__content {
         @include row-flex;
         align-items: flex-start;
+
         .button2 {
             @include size-xs(12);
             @include shift-xs(0);
@@ -11,43 +13,62 @@
             margin-bottom: 24px;
         }
     }
+
     &__title {
         @include size(12);
         @include shift(0);
         margin-bottom: 80px;
-        @include to(767px){
+
+        @include to(767px) {
             margin-bottom: 24px;
         }
     }
-    .news-card1 { 
+
+    .news-link {
+        text-decoration: none;
+        transition: transform 0.2s ease-in-out;
+
+        @include from (768px) {
+            &:hover {
+                transform: scale(1.15)
+            }
+        }
+    }
+
+    .news-card1 {
         @include size(3);
         @include shift(0);
         @include size-xs(12);
         @include shift-xs(0);
     }
-    .news-card2 { 
+
+    .news-card2 {
         @include size(5);
         @include shift-right(0);
         @include shift-left(1);
         @include size-xs(12);
         @include shift-xs(0);
         margin-top: 40px;
-        @include to(767px){
+
+        @include to(767px) {
             margin-top: 24px;
         }
     }
-    .news-card3 { 
+
+    .news-card3 {
         @include size(2.5);
         @include shift-right(0);
         @include shift-left(0.5);
         @include size-xs(12);
         @include shift-xs(0);
         margin-top: pxInVh(296);
-        @include to(767px){
+
+        @include to(767px) {
             margin-top: 24px;
         }
     }
-    .news-card4 { 
+
+    .news-card4 {
         @include size(4);
         @include shift-right(0);
         @include shift-left(8);
@@ -55,25 +76,30 @@
         @include shift-xs(0);
         margin-top: pxInVh(140);
         margin-bottom: pxInVh(120);
-        @include to(767px){
+
+        @include to(767px) {
             margin-top: 24px;
             margin-bottom: 24px;
         }
 
     }
+
     &__image1 {
         @include size(6);
         @include shift(0);
         @include size-xs(12);
         @include shift-xs(0);
         margin-bottom: pxInVh(120);
-        @include to(767px){
+
+        @include to(767px) {
             margin-bottom: 50px;
             order: 5;
         }
+
         &-wrap {
             position: relative;
             padding-bottom: 116%;
+
             img {
                 position: absolute;
                 top: 0;
@@ -84,25 +110,31 @@
             }
         }
     }
+
     &__terms-payment {
         @include size(6);
         @include shift(0);
         @include size-xs(12);
         @include shift-xs(0);
-        @include to(767px){
+
+        @include to(767px) {
             order: 4;
             margin-top: 25px;
             margin-bottom: 24px;
         }
+
         &-title {
             margin-bottom: 52px;
-            @include to(767px){
+
+            @include to(767px) {
                 margin-bottom: 24px;
             }
         }
+
         li {
             position: relative;
             padding-left: 22px;
+
             &:before {
                 content: '';
                 position: absolute;
@@ -116,38 +148,47 @@
                 border: 1px solid var(--white);
             }
         }
+
         li~li {
             margin-top: 36px;
-            @include to(767px){
+
+            @include to(767px) {
                 margin-top: 12px;
             }
         }
     }
+
     &__other-promotions {
         @include size(6);
         @include shift(0);
         @include size-xs(12);
         @include shift-xs(0);
-        @include to(767px){
+
+        @include to(767px) {
             order: 6;
             margin-bottom: 24px;
         }
+
         &-title {
             margin-bottom: 60px;
-            @include to(767px){
+
+            @include to(767px) {
                 margin-bottom: 36px;
             }
         }
-        &-subtitle  {
+
+        &-subtitle {
             margin-bottom: 40px;
         }
 
         li {
             position: relative;
             padding-left: 22px;
+
             &>:first-child {
                 margin-bottom: 12px;
             }
+
             &:before {
                 content: '';
                 position: absolute;
@@ -161,23 +202,28 @@
                 border: 1px solid var(--white);
             }
         }
+
         li~li {
             margin-top: 60px;
-            @include to(767px){
+
+            @include to(767px) {
                 margin-top: 36px;
             }
         }
     }
+
     &__image2 {
         position: relative;
         @include size(6);
         @include shift(0);
         @include size-xs(12);
         @include shift-xs(0);
-        @include to(767px){
+
+        @include to(767px) {
             order: 7;
             margin-bottom: 24px;
         }
+
         button {
             position: absolute;
             z-index: 2;
@@ -185,13 +231,16 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: calc(100% - pxWidthInVw(120));
-            @include to(767px){
+
+            @include to(767px) {
                 font-size: 14px;
             }
         }
+
         &-wrap {
             position: relative;
             padding-bottom: 135%;
+
             img {
                 position: absolute;
                 top: 0;
@@ -207,23 +256,29 @@
 .news-card1 {
     background: var(--darkblue, #033C71);
     padding: 18px;
-    @include to(767px){
+
+    @include to(767px) {
         padding: 16px;
     }
+
     &>:first-child {
         margin-bottom: 56px;
-        @include to(767px){
+
+        @include to(767px) {
             margin-bottom: 24px;
         }
     }
 }
+
 .news-card2 {
     padding: 30px;
     position: relative;
     padding-bottom: pxInVh(504);
-    @include to(767px){
+
+    @include to(767px) {
         padding: 16px;
     }
+
     &__bg {
         position: absolute;
         top: 0;
@@ -233,26 +288,32 @@
         object-fit: cover;
         object-position: left;
     }
+
     &__text {
         position: relative;
         z-index: 2;
     }
 }
+
 .news-card3 {
     background-color: var(--blue-2);
     padding: 12px 12px 76px 12px;
     display: flex;
     flex-direction: column;
     gap: 24px;
-    align-items: flex-start;justify-content: flex-start;
-    @include to(767px){
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    @include to(767px) {
         padding: 16px;
     }
 }
+
 .news-card4 {
     background-color: var(--main);
     padding: 18px 18px pxInVh(128) 18px;
-    @include to(767px){
+
+    @include to(767px) {
         padding: 16px;
     }
 }

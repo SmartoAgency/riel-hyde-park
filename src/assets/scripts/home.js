@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/all';
 import { pad, useState } from './modules/helpers/helpers';
 import splitToLinesAndFadeUp from './modules/effects/splitLinesAndFadeUp';
 import popupFormPlanning from './modules/popup-form-planning/popup-form-planning';
+import googleMap from './modules/map/map';
 
 // const header = document.querySelector('.header');
 
@@ -15,23 +16,42 @@ gsap.core.globals('ScrollTrigger', ScrollTrigger);
 
 Swiper.use([Mousewheel, Navigation, FreeMode]);
 
-
-
-new Swiper('[data-slides-slider]', {
-  //data-slides-slider-prev
-  //data-slides-slider-next
+const slider = new Swiper('[data-slides-slider]', {
   navigation: {
     nextEl: '[data-slides-slider-next]',
     prevEl: '[data-slides-slider-prev]',
   },
+  on: {
+    init: function() {
+      handleIframes(this); // Запускаємо для першого активного слайду
+    },
+    slideChange: function() {
+      handleIframes(this);
+    },
+  },
+});
 
-})
+function handleIframes(swiper) {
+  swiper.slides.forEach((slide, index) => {
+    const iframe = slide.querySelector('iframe');
+    if (!iframe) return;
+    console.log(iframe);
+    if (index === swiper.activeIndex) {
+      // Активний слайд: додаємо src, якщо його ще немає
+      console.log(iframe.src, iframe.dataset.src);
 
+      iframe.src = iframe.dataset.src;
+    } else {
+      // Неактивні слайди: видаляємо src, щоб зупинити відео/контент
+      iframe.src = '';
+    }
+  });
+}
 
 function advantagesTabsHandler() {
   const tabs = document.querySelectorAll('[data-advantage-tab]');
   const containers = document.querySelectorAll('[data-advantage-tab-container]');
-  const [ currentTab, setCurrentTab, subscribeCurrentTab ] = useState(null);
+  const [currentTab, setCurrentTab, subscribeCurrentTab] = useState(null);
   tabs.forEach((tab, index) => {
     tab.addEventListener('click', () => {
       const dataset = tab.dataset.advantageTab;
@@ -39,8 +59,7 @@ function advantagesTabsHandler() {
     });
   });
 
-  subscribeCurrentTab((value) => {
-
+  subscribeCurrentTab(value => {
     containers.forEach((container, i) => {
       const dataset = container.dataset.advantageTabContainer;
       if (value == dataset) {
@@ -67,45 +86,71 @@ function advantagesTabsHandler() {
       const dataset = el.dataset.advantageTab;
       setCurrentTab(dataset);
     }
-  })
+  });
 }
 
 advantagesTabsHandler();
-
-
+googleMap();
 function gallerySliderHandler() {
-
   const images = {
-    territoriya: ['./assets/images/gallery/image1.jpg', './assets/images/gallery/image1.jpg'],
-    rozvagy: ['./assets/images/gallery/image1.jpg'],
-    hall: ['./assets/images/gallery/image1.jpg'],
-    zhytlovyi_poverh: ['./assets/images/gallery/image1.jpg'],
-    parking: ['./assets/images/gallery/image1.jpg'],
-    ukrytia: ['./assets/images/gallery/image1.jpg'],
-  }
+    territoriya: [
+      './assets/images/gallery/territoriya/territoriya1.jpg',
+      './assets/images/gallery/territoriya/territoriya2.jpg',
+      './assets/images/gallery/territoriya/territoriya3.jpg',
+      './assets/images/gallery/territoriya/territoriya4.jpg',
+      './assets/images/gallery/territoriya/territoriya5.jpg',
+      './assets/images/gallery/territoriya/territoriya6.jpg',
+      './assets/images/gallery/territoriya/territoriya7.jpg',
+      './assets/images/gallery/territoriya/territoriya8.jpg',
+    ],
+    rozvagy: [
+      './assets/images/gallery/rozvagy/rozvagy1.jpg',
+      './assets/images/gallery/rozvagy/rozvagy2.jpg',
+      './assets/images/gallery/rozvagy/rozvagy3.jpg',
+      './assets/images/gallery/rozvagy/rozvagy4.jpg',
+      './assets/images/gallery/rozvagy/rozvagy5.jpg',
+      './assets/images/gallery/rozvagy/rozvagy6.jpg',
+      './assets/images/gallery/rozvagy/rozvagy7.jpg',
+    ],
+    hall: ['./assets/images/gallery/hall/hall1.jpg', './assets/images/gallery/hall/hall2.jpg'],
+    zhytlovyi_poverh: ['./assets/images/zhytlovyi_poverh/zhytlovyi_poverh1.jpg'],
+    parking: [
+      './assets/images/gallery/parking/parking1.jpg',
+      './assets/images/gallery/parking/parking2.jpg',
+    ],
+    ukrytia: ['./assets/images/gallery/ukrytia/ukrytia1.jpg'],
+    interier: [
+      './assets/images/gallery/interier/interier1.jpg',
+      './assets/images/gallery/interier/interier2.jpg',
+      './assets/images/gallery/interier/interier3.jpg',
+      './assets/images/gallery/interier/interier4.jpg',
+      './assets/images/gallery/interier/interier5.jpg',
+      './assets/images/gallery/interier/interier6.jpg',
+      './assets/images/gallery/interier/interier7.jpg',
+    ],
+  };
 
-  const [ galleryFilter, setGalleryFilter, subscribeGalleryFilter ] = useState('');
+  const [galleryFilter, setGalleryFilter, subscribeGalleryFilter] = useState('territoriya');
 
-  document.querySelectorAll('[data-gallery-filter-button]').forEach((button) => {
+  document.querySelectorAll('[data-gallery-filter-button]').forEach(button => {
     button.addEventListener('click', () => {
       const dataset = button.dataset.galleryFilterButton;
       setGalleryFilter(dataset);
     });
-  })
+  });
 
-  let fullTick = document.querySelectorAll('[data-gallery-slider] .swiper-slide').length - 1;
-  fullTick = fullTick * 315 + 695;
-  const oneTick = 315;
-  
-  const convertedTick = gsap.utils.mapRange(0, fullTick, 0, 1, oneTick);
+  // let fullTick = document.querySelectorAll('[data-gallery-slider] .swiper-slide').length - 1;
+  // fullTick = fullTick * 315 + 695;
+  // const oneTick = 315;
 
-  console.log('convertedTick', convertedTick);
-  
+  // const convertedTick = gsap.utils.mapRange(0, fullTick, 0, 1, oneTick);
+
+  // console.log('convertedTick', convertedTick);
 
   const swiper = new Swiper('[data-gallery-slider]', {
-    centeredSlides: true,
+    loop: true,
     slidesPerView: 1,
-    spaceBetween : 8,
+    spaceBetween: 8,
     autoHeight: true,
     // freeMode: true,
     simulateTouch: false,
@@ -119,16 +164,16 @@ function gallerySliderHandler() {
         slidesPerView: 3,
         spaceBetween: 0,
         autoHeight: true,
-        centeredSlides: false,
+        centeredSlides: true,
+        // centeredSlides: false,
         simulateTouch: true,
-      }
+      },
     },
     on: {
-      slideChangeTransitionEnd: (swiper) => {
+      slideChangeTransitionEnd: swiper => {
         swiper.update();
-        // swiper.updateSize();
-      }
-    }
+      },
+    },
   });
 
   // document.querySelector('[data-gallery-slider-next]').addEventListener('click', () => {
@@ -138,39 +183,36 @@ function gallerySliderHandler() {
   //   swiper.setProgress(swiper.progress - convertedTick, 800);
   // });
 
-  subscribeGalleryFilter((value) => {
-
-    document.querySelectorAll('[data-gallery-filter-button]').forEach((button) => {
+  subscribeGalleryFilter(value => {
+    document.querySelectorAll('[data-gallery-filter-button]').forEach(button => {
       const dataset = button.dataset.galleryFilterButton;
       if (dataset == value) {
         button.classList.add('active');
       } else {
         button.classList.remove('active');
       }
-    })
+    });
     const newGallery = images[value];
     const swiperWrapper = swiper.wrapperEl;
     console.log('swiperWrapper', swiperWrapper);
 
-    swiper.wrapperEl.innerHTML = newGallery.map((image, index) => {
-      return `
+    swiper.wrapperEl.innerHTML = newGallery
+      .map((image, index) => {
+        return `
         <div class="swiper-slide">
           <img src="${image}" alt="gallery image">
         </div>
       `;
-    }).join('');
+      })
+      .join('');
     swiper.update();
-    
-
-  })
+  });
+  setGalleryFilter('territoriya');
 }
 
 gallerySliderHandler();
 
-
-
-//data-popup-video 
-
+//data-popup-video
 
 function constructionSliderHandler() {
   return new Swiper('[data-construction-slider]', {
@@ -180,121 +222,139 @@ function constructionSliderHandler() {
       768: {
         slidesPerView: 3,
         spaceBetween: 30,
-      }
-    }
-  })
+      },
+    },
+    navigation: {
+      nextEl: '[data-construction-slider-next]',
+      prevEl: '[data-construction-slider-prev]',
+    },
+  });
 }
 
 const constructionSlider = constructionSliderHandler();
 
-
-//data-construction-filter
-
 function constructionFilterHandler(slider) {
-
-  const [ constructionFilter, setConstructionFilter, subscribeConstructionFilter ] = useState({
-
-  });
+  const [constructionFilter, setConstructionFilter, subscribeConstructionFilter] = useState({});
 
   const filters = document.querySelectorAll('[data-construction-filter]');
-  filters.forEach((filter) => {
-    filter.addEventListener('change',function(evt){
-      const dataset = evt.target.dataset.constructionFilter;
+
+  // 1. Отримуємо дефолтні значення фільтрів
+  const initialState = {};
+  filters.forEach(filter => {
+    const key = filter.dataset.constructionFilter;
+
+    initialState[key] = filter.value;
+    console.log(initialState);
+  });
+
+  // 2. Встановлюємо початковий стан фільтрів
+  setConstructionFilter(initialState);
+
+  //  Вручну тригеримо фільтрацію одразу після ініціалізації
+  applyFilter(initialState);
+
+  // 3. Вішаємо слухачі
+  filters.forEach(filter => {
+    filter.addEventListener('change', function(evt) {
+      const key = evt.target.dataset.constructionFilter;
       const value = evt.target.value;
-      setConstructionFilter({
+      const newState = {
         ...constructionFilter(),
-        [dataset]: value
-      });
+        [key]: value,
+      };
+      setConstructionFilter(newState);
+      applyFilter(newState); // 🔥 застосування фільтра при зміні
     });
   });
 
-  subscribeConstructionFilter((value) => {
-    console.log('value', value);
-    
-    document.querySelectorAll('[data-construction-card]').forEach((card) => {
+  // 4. Функція фільтрації
+  function applyFilter(value) {
+    const cards = document.querySelectorAll('[data-construction-card]');
+    cards.forEach(card => {
       let isShow = true;
       Object.entries(value).forEach(([key, val]) => {
-        const cardSingleFilterValue = card.dataset[key];
-        console.log('dataset', cardSingleFilterValue);
-        if (cardSingleFilterValue != val) {
+        const cardValue = card.dataset[key];
+        if (cardValue != val) {
           isShow = false;
-        } 
-      })
+        }
+      });
       card.style.display = isShow ? '' : 'none';
     });
+
+    // Прокрутка до початку та оновлення слайдера
+    slider.slideTo(0);
     slider.update();
-  })
+  }
 }
 
 constructionFilterHandler(constructionSlider);
 
 popupFormPlanning();
 
-
 function formSuccessHandler() {
-  const [ formSuccess, setFormSuccess, subscribeFormSuccess ] = useState(false);
+  const [formSuccess, setFormSuccess, subscribeFormSuccess] = useState(false);
   window.addEventListener('formSuccess', () => {
     setFormSuccess(true);
   });
   const popup = document.querySelector('[data-form-success-popup]');
-    document.body.addEventListener('click',function successPopupOpen(evt){
-        const target = evt.target.closest('[data-form-success-popup-open]');
-        if (!target) {
-            return;
-        }
-        setFormSuccess(true);
-    });
+  document.body.addEventListener('click', function successPopupOpen(evt) {
+    const target = evt.target.closest('[data-form-success-popup-open]');
+    if (!target) {
+      return;
+    }
+    setFormSuccess(true);
+  });
 
-    document.body.addEventListener('click',function successPopupClose(evt){
-        const target = evt.target.closest('[data-form-success-popup-close]');
-        if (!target) {
-            return;
-        }
-        setFormSuccess(false);
-    });
+  document.body.addEventListener('click', function successPopupClose(evt) {
+    const target = evt.target.closest('[data-form-success-popup-close]');
+    if (!target) {
+      return;
+    }
+    setFormSuccess(false);
+  });
 
-    subscribeFormSuccess((value) => {
-        if (value) {
-            popup.classList.add('active');
-            document.body.classList.add('popup-open');
-            window.dispatchEvent(new Event('resize-me'));
-        } else {
-            popup.classList.remove('active');
-            document.body.classList.remove('popup-open');
-        }
-    })
+  subscribeFormSuccess(value => {
+    if (value) {
+      popup.classList.add('active');
+      document.body.classList.add('popup-open');
+      window.dispatchEvent(new Event('resize-me'));
+    } else {
+      popup.classList.remove('active');
+      document.body.classList.remove('popup-open');
+    }
+  });
 }
 formSuccessHandler();
 
 function callbackPopupHandler() {
-  const [ formSuccess, setFormSuccess, subscribeFormSuccess ] = useState(false);
+  const [formSuccess, setFormSuccess, subscribeFormSuccess] = useState(false);
   const popup = document.querySelector('[data-callback-popup]');
-    document.body.addEventListener('click',function successPopupOpen(evt){
-        const target = evt.target.closest('[data-callback-popup-open]');
-        if (!target) {
-            return;
-        }
-        setFormSuccess(true);
-    });
+  document.body.addEventListener('click', function successPopupOpen(evt) {
+    const target = evt.target.closest('[data-callback-popup-open]');
+    if (!target) {
+      return;
+    }
+    setFormSuccess(true);
+  });
 
-    document.body.addEventListener('click',function successPopupClose(evt){
-        const target = evt.target.closest('[data-callback-popup-close]');
-        if (!target) {
-            return;
-        }
-        setFormSuccess(false);
-    });
+  document.body.addEventListener('click', function successPopupClose(evt) {
+    const target = evt.target.closest('[data-callback-popup-close]');
+    if (!target) {
+      return;
+    }
+    setFormSuccess(false);
+  });
 
-    subscribeFormSuccess((value) => {
-        if (value) {
-            popup.classList.add('active');
-            document.body.classList.add('popup-open');
-            window.dispatchEvent(new Event('resize-me'));
-        } else {
-            popup.classList.remove('active');
-            document.body.classList.remove('popup-open');
-        }
-    })
+  subscribeFormSuccess(value => {
+    if (value) {
+      popup.classList.add('active');
+      document.body.classList.add('popup-open');
+      window.dispatchEvent(new Event('resize-me'));
+    } else {
+      popup.classList.remove('active');
+      document.body.classList.remove('popup-open');
+    }
+  });
 }
 
 callbackPopupHandler();
@@ -303,28 +363,26 @@ function mobileNewsHandler() {
   if (window.screen.width > 767) {
     return;
   }
-  const hiddenNews = document.querySelectorAll('[data-news-hidden-on-mobile]')
+  const hiddenNews = document.querySelectorAll('[data-news-hidden-on-mobile]');
 
   //data-news-hidden-on-mobile
   //data-news-reveal-mobile
 
-  hiddenNews.forEach((el) => {
+  hiddenNews.forEach(el => {
     el.style.display = 'none';
   });
 
-
-  document.querySelectorAll('[data-news-reveal-mobile]').forEach((el) => {
-    el.addEventListener('click', (evt) => {
-      hiddenNews.forEach((el) => {
+  document.querySelectorAll('[data-news-reveal-mobile]').forEach(el => {
+    el.addEventListener('click', evt => {
+      hiddenNews.forEach(el => {
         el.style.display = '';
       });
       el.remove();
-    })
-  })
+    });
+  });
 }
 
 mobileNewsHandler();
-
 
 function documentsSlider() {
   new Swiper('[data-documents-slider]', {
@@ -346,8 +404,8 @@ function documentsSlider() {
       1360: {
         slidesPerView: 6,
         spaceBetween: 30,
-      }
-    }
-  })
+      },
+    },
+  });
 }
 documentsSlider();
