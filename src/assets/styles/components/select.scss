@@ -6,7 +6,9 @@
   color: var(--darkblue);
   border-radius: 0;
   font-family: $default-font2;
-  ;
+
+
+
 
   &:focus-within {
     outline: none;
@@ -17,7 +19,7 @@
 
     color: var(--darkblue);
     transition: 0.4s rotate;
-    margin-left: min(10px, auto);
+    margin-left: 10px;
   }
 
   &:open::picker-icon {

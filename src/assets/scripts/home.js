@@ -5,6 +5,7 @@ import { pad, useState } from './modules/helpers/helpers';
 import splitToLinesAndFadeUp from './modules/effects/splitLinesAndFadeUp';
 import popupFormPlanning from './modules/popup-form-planning/popup-form-planning';
 import googleMap from './modules/map/map';
+import './modules/animations';
 
 // const header = document.querySelector('.header');
 
@@ -88,45 +89,50 @@ function advantagesTabsHandler() {
     }
   });
 }
-
+//https://riel-hyde-park-wp.smarto.com.ua/wp-content/themes/3d/assets/images/characteristics/img3.jpg
 advantagesTabsHandler();
 googleMap();
 function gallerySliderHandler() {
   const images = {
     territoriya: [
-      './assets/images/gallery/territoriya/territoriya1.jpg',
-      './assets/images/gallery/territoriya/territoriya2.jpg',
-      './assets/images/gallery/territoriya/territoriya3.jpg',
-      './assets/images/gallery/territoriya/territoriya4.jpg',
-      './assets/images/gallery/territoriya/territoriya5.jpg',
-      './assets/images/gallery/territoriya/territoriya6.jpg',
-      './assets/images/gallery/territoriya/territoriya7.jpg',
-      './assets/images/gallery/territoriya/territoriya8.jpg',
+      '/wp-content/themes/3d/assets/images/gallery/territoriya/territoriya1.jpg',
+      '/wp-content/themes/3d/assets/images/gallery/territoriya/territoriya2.jpg',
+      '/wp-content/themes/3d/assets/images/gallery/territoriya/territoriya3.jpg',
+      '/wp-content/themes/3d/assets/images/gallery/territoriya/territoriya4.jpg',
+      '/wp-content/themes/3d/assets/images/gallery/territoriya/territoriya5.jpg',
+      '/wp-content/themes/3d/assets/images/gallery/territoriya/territoriya6.jpg',
+      '/wp-content/themes/3d/assets/images/gallery/territoriya/territoriya7.jpg',
+      '/wp-content/themes/3d/assets/images/gallery/territoriya/territoriya8.jpg',
     ],
     rozvagy: [
-      './assets/images/gallery/rozvagy/rozvagy1.jpg',
-      './assets/images/gallery/rozvagy/rozvagy2.jpg',
-      './assets/images/gallery/rozvagy/rozvagy3.jpg',
-      './assets/images/gallery/rozvagy/rozvagy4.jpg',
-      './assets/images/gallery/rozvagy/rozvagy5.jpg',
-      './assets/images/gallery/rozvagy/rozvagy6.jpg',
-      './assets/images/gallery/rozvagy/rozvagy7.jpg',
+      '/wp-content/themes/3d/assets/images/gallery/rozvagy/rozvagy1.jpg',
+      '/wp-content/themes/3d/assets/images/gallery/rozvagy/rozvagy2.jpg',
+      '/wp-content/themes/3d/assets/images/gallery/rozvagy/rozvagy3.jpg',
+      '/wp-content/themes/3d/assets/images/gallery/rozvagy/rozvagy4.jpg',
+      '/wp-content/themes/3d/assets/images/gallery/rozvagy/rozvagy5.jpg',
+      '/wp-content/themes/3d/assets/images/gallery/rozvagy/rozvagy6.jpg',
+      '/wp-content/themes/3d/assets/images/gallery/rozvagy/rozvagy7.jpg',
     ],
-    hall: ['./assets/images/gallery/hall/hall1.jpg', './assets/images/gallery/hall/hall2.jpg'],
-    zhytlovyi_poverh: ['./assets/images/zhytlovyi_poverh/zhytlovyi_poverh1.jpg'],
+    hall: [
+      '/wp-content/themes/3d/assets/images/gallery/hall/hall1.jpg',
+      '/wp-content/themes/3d/assets/images/gallery/hall/hall2.jpg',
+    ],
+    zhytlovyi_poverh: [
+      '/wp-content/themes/3d/assets/images/zhytlovyi_poverh/zhytlovyi_poverh1.jpg',
+    ],
     parking: [
-      './assets/images/gallery/parking/parking1.jpg',
-      './assets/images/gallery/parking/parking2.jpg',
+      '/wp-content/themes/3d/assets/images/gallery/parking/parking1.jpg',
+      '/wp-content/themes/3d/assets/images/gallery/parking/parking2.jpg',
     ],
-    ukrytia: ['./assets/images/gallery/ukrytia/ukrytia1.jpg'],
+    ukrytia: ['/wp-content/themes/3d/assets/images/gallery/ukrytia/ukrytia1.jpg'],
     interier: [
-      './assets/images/gallery/interier/interier1.jpg',
-      './assets/images/gallery/interier/interier2.jpg',
-      './assets/images/gallery/interier/interier3.jpg',
-      './assets/images/gallery/interier/interier4.jpg',
-      './assets/images/gallery/interier/interier5.jpg',
-      './assets/images/gallery/interier/interier6.jpg',
-      './assets/images/gallery/interier/interier7.jpg',
+      '/wp-content/themes/3d/assets/images/gallery/interier/interier1.jpg',
+      '/wp-content/themes/3d/assets/images/gallery/interier/interier2.jpg',
+      '/wp-content/themes/3d/assets/images/gallery/interier/interier3.jpg',
+      '/wp-content/themes/3d/assets/images/gallery/interier/interier4.jpg',
+      '/wp-content/themes/3d/assets/images/gallery/interier/interier5.jpg',
+      '/wp-content/themes/3d/assets/images/gallery/interier/interier6.jpg',
+      '/wp-content/themes/3d/assets/images/gallery/interier/interier7.jpg',
     ],
   };
 

@@ -11,6 +11,7 @@
 	padding: 22px 0;
 	transition: all 0.3s ease-in-out;
 	box-shadow: 0px 12px 24px 0px rgba(0, 0, 0, 0.08);
+	opacity: 0;
 
 	@media screen and (max-width:767px) {
 		display: none !important;
@@ -103,9 +104,9 @@
 	&__link-icon {
 		display: flex;
 		justify-content: flex-start;
-		align-items: flex-start;
+		align-items: center;
 		text-decoration: none;
-		flex-grow: 1;
+		// flex-grow: 1;
 		color: var(--white);
 
 		[fill] {

@@ -115,11 +115,11 @@ export default function googleMap() {
 
     const baseFolder = window.location.href.match(/localhost/)
       ? './assets/images/map/'
-      : './assets/images/map/';
+      : '/wp-content/themes/3d/assets/images/map/';
     const defaultMarkerSize =
       document.documentElement.clientWidth < 1600
-        ? new google.maps.Size(46, 80)
-        : new google.maps.Size(56, 90);
+        ? new google.maps.Size(36, 70)
+        : new google.maps.Size(42, 80);
     const buildLogoSize = new google.maps.Size(82, 82);
 
     const markersAdresses = {
@@ -212,7 +212,7 @@ export default function googleMap() {
       {
         type: 'nature',
         icon: {
-          url: markersAdresses.activities,
+          url: markersAdresses.nature,
           scaledSize: defaultMarkerSize,
         },
         position: { lat: 49.8412704, lng: 24.0603914 },
@@ -262,53 +262,57 @@ export default function googleMap() {
       gmarkers.push(mapMarker);
     });
   }
-}
-const mapSingle = document.querySelector('.map-simple');
-console.log(mapSingle);
-if (mapSingle) {
-  await loadGoogleMapsScript();
 
-  const singleMapCenter = { lat: 50.4542415, lng: 30.6057162 };
-  const singleMapZoom = 15;
-  const singleMapText = 'РІЕЛ – відділ сервісу у Києві';
+  const mapSingle = document.querySelector('.map-simple');
+  console.log(mapSingle);
+  if (mapSingle) {
+    (async () => {
+      console.log(mapSingle);
+      await loadGoogleMapsScript();
+      console.log(mapSingle);
+      const singleMapCenter = { lat: 49.8541054, lng: 24.0444017 };
+      const singleMapZoom = 15;
+      const singleMapText = 'Відділ продажів';
 
-  const singleMap = new google.maps.Map(mapSingle, {
-    zoom: singleMapZoom,
-    center: singleMapCenter,
-    scrollwheel: false,
-    navigationControl: false,
-    mapTypeControl: false,
-    scaleControl: false,
-    draggable: true,
-    styles: mapStyle(),
-  });
+      const singleMap = new google.maps.Map(mapSingle, {
+        zoom: singleMapZoom,
+        center: singleMapCenter,
+        scrollwheel: false,
+        navigationControl: false,
+        mapTypeControl: false,
+        scaleControl: false,
+        draggable: true,
+        styles: mapStyle(),
+      });
 
-  const singleMarkerIcon = {
-    url: `${
-      window.location.href.match(/localhost/)
-        ? './assets/images/map/riel.svg'
-        : './assets/images/map/riel.svg'
-    }`,
-    scaledSize:
-      document.documentElement.clientWidth < 1600
-        ? new google.maps.Size(80, 80)
-        : new google.maps.Size(90, 90),
-  };
+      const singleMarkerIcon = {
+        url: `${
+          window.location.href.match(/localhost/)
+            ? './assets/images/map/main.png'
+            : '/wp-content/themes/3d/assets/images/map/main.svg'
+        }`,
+        scaledSize:
+          document.documentElement.clientWidth < 1600
+            ? new google.maps.Size(80, 80)
+            : new google.maps.Size(90, 90),
+      };
 
-  const singleMarker = new google.maps.Marker({
-    position: singleMapCenter,
-    map: singleMap,
-    icon: singleMarkerIcon,
-    animation: google.maps.Animation.DROP,
-  });
+      const singleMarker = new google.maps.Marker({
+        position: singleMapCenter,
+        map: singleMap,
+        icon: singleMarkerIcon,
+        animation: google.maps.Animation.DROP,
+      });
 
-  const singleInfoWindow = new google.maps.InfoWindow({
-    content: singleMapText,
-    maxWidth: 300,
-  });
+      const singleInfoWindow = new google.maps.InfoWindow({
+        content: singleMapText,
+        maxWidth: 300,
+      });
 
-  singleMarker.addListener('click', function() {
-    singleInfoWindow.open(singleMap, singleMarker);
-    singleMap.panTo(singleMarker.getPosition());
-  });
+      singleMarker.addListener('click', function() {
+        singleInfoWindow.open(singleMap, singleMarker);
+        singleMap.panTo(singleMarker.getPosition());
+      });
+    })();
+  }
 }

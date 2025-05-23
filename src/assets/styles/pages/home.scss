@@ -3,9 +3,12 @@
     // width: 100vw;
     height: 100vh;
     overflow: hidden;
-    @include to(767px){
+    opacity: 0;
+
+    @include to(767px) {
         height: calc(var(--vh, 1vh) * 100);
     }
+
     &__bg {
         position: absolute;
         top: 0;
@@ -13,12 +16,14 @@
         width: 100%;
         height: 100%;
         z-index: -1;
+
         img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
     }
+
     &__bg2 {
         position: absolute;
         top: 0;
@@ -26,17 +31,20 @@
         width: 70%;
         height: 100%;
         z-index: -1;
+
         // display: none;
-        @media screen and (max-width:767px){
+        @media screen and (max-width:767px) {
             width: 100%;
             height: 70%;
         }
+
         img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
     }
+
     &__content {
 
         padding-bottom: pxInVh(159);
@@ -45,52 +53,63 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        @media screen and (max-width:767px){
+
+        @media screen and (max-width:767px) {
             flex-direction: row;
             flex-wrap: wrap;
             align-items: center;
             align-content: flex-end;
             padding-bottom: 45px;
         }
-        @include from(768px){
+
+        @include from(768px) {
             .front-screen__title {
                 width: 100%;
             }
+
             .button {
                 margin-top: auto;
             }
         }
-        @include to(767px){
+
+        @include to(767px) {
             .front-screen__title {
                 order: -1;
             }
+
             .button {
-                
+
                 width: 100%;
             }
         }
-        @include from(768px){ 
-        }
+
+        @include from(768px) {}
     }
+
     &__title {
         align-self: flex-start;
-        @include from(768px){
+
+        @include from(768px) {
             margin-bottom: auto;
         }
-        @include to(767px){
+
+        @include to(767px) {
             margin-bottom: 42px;
         }
     }
+
     &__logo {
-        @include from(768px){
+        @include from(768px) {
             margin-bottom: 25px;
         }
-        @media screen and (max-width:767px){
+
+        @media screen and (max-width:767px) {
             width: 93px;
             height: 93px;
             position: absolute;
             right: var(--page-side-fields);
             bottom: 200px;
+
             svg {
                 width: 100%;
                 height: 100%;

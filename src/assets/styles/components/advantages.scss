@@ -41,7 +41,7 @@
             margin-top: 40px;
         }
 
-        &> p~p {
+        &>p~p {
             margin-top: 0.7em;
         }
 
@@ -90,11 +90,32 @@
     }
 }
 
+.map-wrapper {
+    margin-top: 32px;
+
+    @include from (768px) {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+
+        .map {
+            width: 70%;
+            margin-bottom: 32px;
+            height: 50vh
+        }
+
+        .map-filter {
+            width: 28%;
+        }
+    }
+
+}
+
 .map-filter {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
-    margin-top: 32px;
+
     margin-bottom: 12px;
 
     .button3 {
@@ -102,6 +123,8 @@
         font-size: 14px;
 
         @include from (768px) {
+
+
             &:hover {
                 svg path {
                     fill: #0273CF
@@ -115,4 +138,5 @@
             }
         }
     }
+
 }
