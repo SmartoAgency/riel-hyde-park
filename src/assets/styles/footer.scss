@@ -79,6 +79,12 @@
     align-items: flex-start;
     justify-content: center;
     gap: 12px;
+    &:first-child{
+    margin-bottom: 12px;}
+    @include from (768px) {
+      &:first-child{
+        margin-bottom:0;}
+    }
     @include size(2);
     @include shift(0);
     @include size-xs(12);
@@ -155,4 +161,5 @@
   text-underline-offset: auto;
   text-underline-position: from-font;
   cursor: pointer;
+  line-height: 120%;
 }

@@ -332,9 +332,9 @@ div:where(.swal2-container).swal2-noanimation.installment-popup-container {
 }
 
 .input-message {
-  position: absolute;
-  bottom: 100%;
-  left: 0;
+  // position: absolute;
+  // bottom: 100%;
+  // left: 0;
   color: var(--main);
 
   @include to(768px) {

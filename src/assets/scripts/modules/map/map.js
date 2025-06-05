@@ -2,64 +2,78 @@
 
 import mapStyle from './map-style';
 
-const mapContainers = document.querySelectorAll('.map');
-export default function googleMap() {
-  // window.initMap = function initMap() {
-  //   mapContainers.forEach((mapElement, index) => {
-  //     // ...
-  //   });
-  // };
+export default async function googleMap() {
+  const mapContainers = document.querySelectorAll('.map');
+  const mapSingle = document.querySelector('.map-simple');
 
+  if (!mapContainers.length && !mapSingle) return;
+
+  // 👇 Завантаження скрипта Google Maps
   async function loadGoogleMapsScript() {
-    return new Promise((resolve, reject) => {
-      if (window.google && window.google.maps) {
-        resolve();
-        return;
-      }
+    if (window.google && window.google.maps) return;
 
+    return new Promise((resolve, reject) => {
       const script = document.createElement('script');
-      let key = '';
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&callback=initMap&language=ua`;
+      const key = ''; // 🔑 Підстав сюди свій ключ
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&language=ua`;
       script.async = true;
       script.defer = true;
-      script.onerror = reject;
-      window.initMap = () => resolve();
+
+      script.onload = () => resolve();
+      script.onerror = () => reject(new Error('Не вдалося завантажити Google Maps API'));
       document.head.appendChild(script);
     });
   }
 
-  // const mapContainers = document.querySelectorAll('.map');
-  console.log(mapContainers);
-  const observerOptions = {
-    rootMargin: '0px',
-    threshold: 0.1,
+  // 👇 Ініціалізація мапи після завантаження API
+  async function initMaps() {
+    await loadGoogleMapsScript();
+
+    if (mapContainers.length) {
+      mapContainers.forEach(container => {
+        createMap(container);
+      });
+    }
+
+    if (mapSingle) {
+      createSingleMap(mapSingle);
+    }
+  }
+
+  // 👇 IntersectionObserver для відкладеного завантаження
+  const observerOptions = { rootMargin: '0px', threshold: 0.1 };
+
+  const observerCallback = async (entries, observer) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        observer.disconnect(); // зупиняємо спостереження
+        await initMaps();
+        break;
+      }
+    }
   };
 
-  mapContainers.forEach(container => {
-    const observer = new IntersectionObserver(async (entries, obs) => {
-      for (const entry of entries) {
-        if (entry.isIntersecting) {
-          obs.unobserve(container);
-          await loadGoogleMapsScript();
-          createMap(container);
-        }
-      }
-    }, observerOptions);
+  const observer = new IntersectionObserver(observerCallback, observerOptions);
+  const firstMap = mapContainers[0] || mapSingle;
+  if (firstMap) {
+    observer.observe(firstMap);
+  }
 
-    observer.observe(container);
-
-    // 🔽 Додаткова перевірка – чи вже елемент видимий при завантаженні
-    if (isElementInViewport(container)) {
-      observer.unobserve(container); // на випадок, якщо буде дублювання
-      loadGoogleMapsScript().then(() => createMap(container));
-    }
-  });
-
-  // 👇 Допоміжна функція
+  // 👇 Додатково — якщо карта вже в viewport
+  if (isElementInViewport(firstMap)) {
+    observer.disconnect();
+    await initMaps();
+  }
+  if (isElementInViewport(mapSingle)) {
+    observer.disconnect();
+    await initMaps();
+  }
   function isElementInViewport(el) {
+    if (!el) return false;
     const rect = el.getBoundingClientRect();
+    
     return (
-      rect.top >= 0 &&
+      rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
       rect.left >= 0 &&
       rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
       rect.right <= (window.innerWidth || document.documentElement.clientWidth)
@@ -237,82 +251,150 @@ export default function googleMap() {
         text: 'Hyde Park вул. Мучна, 32',
       },
     ];
+    const infowindow = new google.maps.InfoWindow({ maxWidth: 300 });
 
-    const infowindow = new google.maps.InfoWindow({
-      maxWidth: 300,
-    });
     markersData.forEach(marker => {
       const mapMarker = new google.maps.Marker({
         map,
+        position: marker.position,
+        icon: marker.icon,
         category: marker.type,
         animation: google.maps.Animation.DROP,
-        zIndex: marker.zIndex || 1,
-        icon: marker.icon,
-        cursor: 'grab',
-        position: new google.maps.LatLng(marker.position.lat, marker.position.lng),
       });
-
-      google.maps.event.addListener(mapMarker, 'click', function() {
+  
+      mapMarker.addListener('click', () => {
         infowindow.setContent(marker.text);
         infowindow.open(map, mapMarker);
-        map.panTo(this.getPosition());
+        map.panTo(marker.position);
       });
-
-      mapMarker.name = marker.type;
+  
       gmarkers.push(mapMarker);
     });
+  
+    
   }
-
-  const mapSingle = document.querySelector('.map-simple');
-  console.log(mapSingle);
-  if (mapSingle) {
-    (async () => {
-      console.log(mapSingle);
-      await loadGoogleMapsScript();
-      console.log(mapSingle);
-      const singleMapCenter = { lat: 49.8541054, lng: 24.0444017 };
+  
+  // 👇 Проста мапа для одного маркера
+  function createSingleMap(container) {
+    const singleMapCenter = { lat: 49.8541054, lng: 24.0444017 };
       const singleMapZoom = 15;
-      const singleMapText = 'Відділ продажів';
-
-      const singleMap = new google.maps.Map(mapSingle, {
-        zoom: singleMapZoom,
-        center: singleMapCenter,
-        scrollwheel: false,
-        navigationControl: false,
-        mapTypeControl: false,
-        scaleControl: false,
-        draggable: true,
-        styles: mapStyle(),
-      });
-
-      const singleMarkerIcon = {
-        url: `${
-          window.location.href.match(/localhost/)
-            ? './assets/images/map/main.png'
-            : '/wp-content/themes/3d/assets/images/map/main.svg'
-        }`,
-        scaledSize:
-          document.documentElement.clientWidth < 1600
-            ? new google.maps.Size(80, 80)
-            : new google.maps.Size(90, 90),
-      };
-
-      const singleMarker = new google.maps.Marker({
-        position: singleMapCenter,
-        map: singleMap,
-        icon: singleMarkerIcon,
-        animation: google.maps.Animation.DROP,
-      });
-
-      const singleInfoWindow = new google.maps.InfoWindow({
-        content: singleMapText,
-        maxWidth: 300,
-      });
-
-      singleMarker.addListener('click', function() {
-        singleInfoWindow.open(singleMap, singleMarker);
-        singleMap.panTo(singleMarker.getPosition());
-      });
-    })();
+      
+    const markerIcon = {
+      url: window.location.href.includes('localhost')
+        ? './assets/images/map/riel.svg'
+        : '/wp-content/themes/3d/assets/images/map/riel.svg',
+      scaledSize:
+        document.documentElement.clientWidth < 1600
+          ? new google.maps.Size(80, 80)
+          : new google.maps.Size(90, 90),
+    };
+  
+    const map = new google.maps.Map(container, {
+      zoom: singleMapZoom,
+      center:singleMapCenter,
+      scrollwheel: false,
+      mapTypeControl: false,
+      draggable: true,
+      styles: mapStyle(),
+    });
+  
+    const marker = new google.maps.Marker({
+      position: singleMapCenter,
+      map,
+      icon: markerIcon,
+      animation: google.maps.Animation.DROP,
+    });
+  
+    const infowindow = new google.maps.InfoWindow({
+      content: 'РІЕЛ – відділ продажу',
+      maxWidth: 300,
+    });
+  
+    marker.addListener('click', () => {
+      infowindow.open(map, marker);
+      map.panTo(center);
+    });
   }
-}
+  }
+
+
+
+
+//     const infowindow = new google.maps.InfoWindow({
+//       maxWidth: 300,
+//     });
+//     markersData.forEach(marker => {
+//       const mapMarker = new google.maps.Marker({
+//         map,
+//         category: marker.type,
+//         animation: google.maps.Animation.DROP,
+//         zIndex: marker.zIndex || 1,
+//         icon: marker.icon,
+//         cursor: 'grab',
+//         position: new google.maps.LatLng(marker.position.lat, marker.position.lng),
+//       });
+
+//       google.maps.event.addListener(mapMarker, 'click', function() {
+//         infowindow.setContent(marker.text);
+//         infowindow.open(map, mapMarker);
+//         map.panTo(this.getPosition());
+//       });
+
+//       mapMarker.name = marker.type;
+//       gmarkers.push(mapMarker);
+//     });
+//   }
+
+//   const mapSingle = document.querySelector('.map-simple');
+//   console.log(mapSingle);
+//   if (mapSingle) {
+//     (async () => {
+//       console.log(mapSingle);
+//       await loadGoogleMapsScript();
+//       console.log(mapSingle);
+//       const singleMapCenter = { lat: 49.8541054, lng: 24.0444017 };
+//       const singleMapZoom = 15;
+//       const singleMapText = 'Відділ продажів';
+
+//       const singleMap = new google.maps.Map(mapSingle, {
+//         zoom: singleMapZoom,
+//         center: singleMapCenter,
+//         scrollwheel: false,
+//         navigationControl: false,
+//         mapTypeControl: false,
+//         scaleControl: false,
+//         draggable: true,
+//         styles: mapStyle(),
+//       });
+
+//       const singleMarkerIcon = {
+//         url: `${
+//           window.location.href.match(/localhost/)
+//             ? './assets/images/map/main.png'
+//             : '/wp-content/themes/3d/assets/images/map/main.svg'
+//         }`,
+//         scaledSize:
+//           document.documentElement.clientWidth < 1600
+//             ? new google.maps.Size(80, 80)
+//             : new google.maps.Size(90, 90),
+//       };
+
+//       const singleMarker = new google.maps.Marker({
+//         position: singleMapCenter,
+//         map: singleMap,
+//         icon: singleMarkerIcon,
+//         animation: google.maps.Animation.DROP,
+//       });
+
+//       const singleInfoWindow = new google.maps.InfoWindow({
+//         content: singleMapText,
+//         maxWidth: 300,
+//       });
+
+//       singleMarker.addListener('click', function() {
+//         singleInfoWindow.open(singleMap, singleMarker);
+//         singleMap.panTo(singleMarker.getPosition());
+//       });
+//     })();
+//   }
+// }

@@ -6,6 +6,8 @@
         margin-bottom: 40px;
 
         @include to(767px) {
+            font-size: 30px;
+            white-space: nowrap;
             margin-bottom: 24px;
         }
     }

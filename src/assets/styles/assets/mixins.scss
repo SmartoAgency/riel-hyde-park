@@ -56,7 +56,7 @@ $screen-height: 720;
 @function lh($lh, $fz) {
 	@return #{($lh/$fz)}em;
 }
-
+ 
 @function pxWidthInVw($px) {
 	$vwSize: $px / 1920 * 100;
 	@return #{$vwSize}vw;

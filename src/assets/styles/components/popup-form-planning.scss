@@ -32,7 +32,7 @@
 
         @include to(767px) {
             max-width: 100%;
-            overflow-x: hidden;
+            
         }
     }
 
@@ -99,6 +99,9 @@
 
         .select {
             margin-right: calc(100% - 240px);
+            &::picker-icon{
+                margin-left: auto;
+            }
         }
 
         &-title {

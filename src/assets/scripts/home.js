@@ -107,7 +107,7 @@ function gallerySliderHandler() {
     rozvagy: [
       '/wp-content/themes/3d/assets/images/gallery/rozvagy/rozvagy1.jpg',
       '/wp-content/themes/3d/assets/images/gallery/rozvagy/rozvagy2.jpg',
-      '/wp-content/themes/3d/assets/images/gallery/rozvagy/rozvagy3.jpg',
+      // '/wp-content/themes/3d/assets/images/gallery/rozvagy/rozvagy3.jpg',
       '/wp-content/themes/3d/assets/images/gallery/rozvagy/rozvagy4.jpg',
       '/wp-content/themes/3d/assets/images/gallery/rozvagy/rozvagy5.jpg',
       '/wp-content/themes/3d/assets/images/gallery/rozvagy/rozvagy6.jpg',
@@ -118,7 +118,7 @@ function gallerySliderHandler() {
       '/wp-content/themes/3d/assets/images/gallery/hall/hall2.jpg',
     ],
     zhytlovyi_poverh: [
-      '/wp-content/themes/3d/assets/images/zhytlovyi_poverh/zhytlovyi_poverh1.jpg',
+      '/wp-content/themes/3d/assets/images/gallery/zhytlovyi_poverh/zhytlovyi_poverh1.jpg',
     ],
     parking: [
       '/wp-content/themes/3d/assets/images/gallery/parking/parking1.jpg',
@@ -133,6 +133,15 @@ function gallerySliderHandler() {
       '/wp-content/themes/3d/assets/images/gallery/interier/interier5.jpg',
       '/wp-content/themes/3d/assets/images/gallery/interier/interier6.jpg',
       '/wp-content/themes/3d/assets/images/gallery/interier/interier7.jpg',
+    ],
+    spa: [
+      '/wp-content/themes/3d/assets/images/gallery/spa/spa1.jpg',
+      '/wp-content/themes/3d/assets/images/gallery/spa/spa2.jpg',
+      '/wp-content/themes/3d/assets/images/gallery/spa/spa3.jpg',
+      '/wp-content/themes/3d/assets/images/gallery/spa/spa4.jpg',
+      '/wp-content/themes/3d/assets/images/gallery/spa/spa5.jpg',
+      '/wp-content/themes/3d/assets/images/gallery/spa/spa6.jpg',
+     
     ],
   };
 
@@ -206,7 +215,7 @@ function gallerySliderHandler() {
       .map((image, index) => {
         return `
         <div class="swiper-slide">
-          <img src="${image}" alt="gallery image">
+          <img loading="lazy" src="${image}" alt="gallery image">
         </div>
       `;
       })
@@ -249,8 +258,14 @@ function constructionFilterHandler(slider) {
   filters.forEach(filter => {
     const key = filter.dataset.constructionFilter;
 
-    initialState[key] = filter.value;
-    console.log(initialState);
+    const options = filter.querySelectorAll('option');
+    const lastOption = options[options.length - 1];
+    const lastValue = lastOption.value;
+
+    filter.value = lastValue; // встановлюємо в UI останнє значення
+    initialState[key] = lastValue;
+
+    console.log(`Фільтр "${key}" ініціалізовано значенням: ${lastValue}`);
   });
 
   // 2. Встановлюємо початковий стан фільтрів
@@ -415,3 +430,18 @@ function documentsSlider() {
   });
 }
 documentsSlider();
+
+const swiperFlat = new Swiper('.swiper-flats', {
+  slidesPerView: 1,
+  spaceBetween: 20,
+  breakpoints: {
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 30,
+    },
+  },
+  navigation: {
+    nextEl: '[data-flats-slider-next]',
+    prevEl: '[data-flats-slider-prev]',
+  },
+});

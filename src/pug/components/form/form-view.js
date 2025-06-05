@@ -55,6 +55,9 @@ const renderForm = (form, elements, toast) => {
         field.inputWrapper.removeSelectedStyle();
       });
       elementsParamFn.$form.reset();
+      document.querySelector('[name="rooms"]').value="";
+      document.querySelector('[name="features"]').value="";
+      document.querySelector('[name="for-whom"]').value="";
       elementsParamFn.$btnSubmit.setAttribute('disabled', false);
       elementsParamFn.$btnSubmit.querySelector('[data-btn-submit-text]').innerHTML = i18next.t(
         'send',
@@ -76,11 +79,11 @@ const renderForm = (form, elements, toast) => {
     case 'filling':
       break;
     case 'failed':
-      toast.addToast({
-        type: 'error',
-        text: i18next.t(form.serverError),
-        title: 'Сталась помилка!',
-      });
+      // toast.addToast({
+      //   type: 'error',
+      //   text: i18next.t(form.serverError),
+      //   title: 'Сталась помилка!',
+      // });
       elementsParamFn.$btnSubmit.removeAttribute('disabled');
       elementsParamFn.$btnSubmit.querySelector('[data-btn-submit-text]').innerHTML = i18next.t(
         'send',

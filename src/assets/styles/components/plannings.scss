@@ -1,4 +1,5 @@
 .plannings {
+    overflow: hidden;
     background-color: var(--white);
     padding-top: var(--section-v-offset);
     padding-bottom: var(--section-v-offset);
@@ -10,23 +11,24 @@
 
         @media screen and (max-width:767px) {
             row-gap: 24px;
+            &>button {
+                @include shift(0);
+                @include shift-xs(0);
+                @include size-xs(12);
+            }
         }
 
-        &>button {
-            @include shift(0);
-            @include shift-xs(0);
-            @include size-xs(12);
-        }
+       
     }
 
 
-    .flat-card {
-        @include size(4);
-        @include shift(0);
-        @include size-xs(12);
-        @include shift-xs(0);
+    // .flat-card {
+    //     @include size(4);
+    //     @include shift(0);
+    //     @include size-xs(12);
+    //     @include shift-xs(0);
 
-    }
+    // }
 }
 
 .white-bg {

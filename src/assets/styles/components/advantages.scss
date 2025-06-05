@@ -27,6 +27,13 @@
 
         @media screen and (max-width:767px) {
             margin-bottom: 16px;
+            position: sticky;
+            top: 68px;
+            z-index: 10;
+            background-color: white;
+            padding-bottom: 12px;
+            padding-right: 10px;
+            margin-right: -5px;
         }
     }
 
@@ -101,7 +108,7 @@
         .map {
             width: 70%;
             margin-bottom: 32px;
-            height: 50vh
+            height: 70vh
         }
 
         .map-filter {

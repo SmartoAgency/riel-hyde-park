@@ -20,6 +20,8 @@
         margin-bottom: 80px;
 
         @include to(767px) {
+            font-size: 30px;
+            white-space: nowrap;
             margin-bottom: 24px;
         }
     }
@@ -171,8 +173,10 @@
 
         &-title {
             margin-bottom: 60px;
-
+            
             @include to(767px) {
+                white-space: nowrap;
+                font-size: 30px;
                 margin-bottom: 36px;
             }
         }

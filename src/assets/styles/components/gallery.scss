@@ -102,6 +102,9 @@
         justify-content: flex-start;
         gap: 12px;
         margin-bottom: 40px;
+        .button3 {
+            padding: 16px;
+        }
     }
 
     &__title {
@@ -130,7 +133,8 @@
 [data-slides-slider-next],
 [data-slides-slider-prev],
 [data-construction-slider-next],
-[data-construction-slider-prev] {
+[data-construction-slider-prev]
+ {
     path {
         transition: all 0.3s ease-in-out;
     }
@@ -144,5 +148,17 @@
 
             stroke: rgba(3, 60, 113, 1);
         }
+    }
+}
+
+[data-flats-slider-next],
+[data-flats-slider-prev] {
+   
+        transition: all 0.3s ease-in-out;
+    
+
+    &:hover{
+       
+filter: drop-shadow(0px 4px 24px #6DACE2);
     }
 }

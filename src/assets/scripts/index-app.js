@@ -125,3 +125,40 @@ function mobileMenuVisibilityHandler() {
 }
 
 mobileMenuVisibilityHandler();
+document.addEventListener('DOMContentLoaded', function () {
+const config = [
+        { checkboxPrefix: 'features-', hiddenName: 'features' },
+        { checkboxPrefix: 'rooms-', hiddenName: 'rooms' }
+    ];
+
+    config.forEach(group => {
+        const checkboxes = document.querySelectorAll(`input[type="checkbox"][name^="${group.checkboxPrefix}"]`);
+        const hiddenInput = document.querySelector(`input[type="hidden"][name="${group.hiddenName}"]`);
+
+        if (!hiddenInput || checkboxes.length === 0) return;
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                const selectedValues = Array.from(checkboxes)
+                    .filter(cb => cb.checked)
+                    .map(cb => cb.value);
+
+                hiddenInput.value = selectedValues.join(', ');
+            });
+        });
+    });
+
+    
+    const select = document.querySelector('select[name="for-whom"]');
+    const hiddenInput = document.querySelector('input[type="hidden"][name="for-whom"]');
+
+    if (!select || !hiddenInput) return;
+
+    // Встановити початкове значення при завантаженні
+    hiddenInput.value = select.value;
+
+    // Оновлювати значення при зміні
+    select.addEventListener('change', function () {
+        hiddenInput.value = this.value;
+    });
+});

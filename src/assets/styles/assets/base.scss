@@ -17,7 +17,7 @@
 .page__inner {
 	@include to(767px){
 		width: 100vw;
-		overflow: hidden;
+		
 		
 	}
 }
@@ -129,10 +129,16 @@ input:-webkit-autofill:active {
 body input:focus:required:invalid, body textarea:focus:required:invalid {
   border-color: red;
 }
-
-body input:required:valid, body textarea:required:valid {
-  border-color: green;
+[data-status="field--error"] .form-field__input{
+  border-color: #D03D35;
+  &::placeholder {
+    color: #D03D35;
+  }
 }
+
+// body input:required:valid, body textarea:required:valid {
+//   border-color: green;
+// }
 
 img {
   width: 100%;
@@ -155,6 +161,7 @@ button {
 	border: navajowhite;
 	margin: 0;
 	padding: 0;
+	font-family: $default-font;
 }
 
 button:hover,
