@@ -116,15 +116,19 @@
         }
 
         @include to(767px) {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            
             .select {
-                width: 100%;
-            }
+                flex: 0.4;
+            } 
 
-            .select~.select {
-                margin-top: 12px;
-            }
-        }
-    }
+            // .select~.select {
+            //     margin-top: 12px;
+            // }
+        } 
+    } 
 
     &__slider {
         user-select: none;
@@ -151,7 +155,9 @@
             svg {
                 pointer-events: all;
                 cursor: pointer;
-
+                &.swiper-button-disabled {
+                pointer-events: none;
+            }
                 @media screen and (max-width:767px) {
                     width: 42px;
                     height: 42px;

@@ -79,10 +79,10 @@
     align-items: flex-start;
     justify-content: center;
     gap: 12px;
-    &:first-child{
+    &{
     margin-bottom: 12px;}
     @include from (768px) {
-      &:first-child{
+      &{
         margin-bottom:0;}
     }
     @include size(2);

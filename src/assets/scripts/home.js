@@ -5,7 +5,7 @@ import { pad, useState } from './modules/helpers/helpers';
 import splitToLinesAndFadeUp from './modules/effects/splitLinesAndFadeUp';
 import popupFormPlanning from './modules/popup-form-planning/popup-form-planning';
 import googleMap from './modules/map/map';
-import './modules/animations';
+
 
 // const header = document.querySelector('.header');
 

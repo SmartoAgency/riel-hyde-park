@@ -1,9 +1,11 @@
 .news {
     padding-bottom: var(--section-v-offset);
     background-color: #fff;
+        max-width: 100vw;
 
     &__content {
         @include row-flex;
+            max-width: 100vw;
         align-items: flex-start;
 
         .button2 {
@@ -175,7 +177,7 @@
             margin-bottom: 60px;
             
             @include to(767px) {
-                white-space: nowrap;
+                // white-space: nowrap;
                 font-size: 30px;
                 margin-bottom: 36px;
             }
@@ -243,6 +245,9 @@
 
         &-wrap {
             position: relative;
+            @include to(767px) {
+                padding-bottom: 343px;
+            }
             padding-bottom: 135%;
 
             img {

@@ -5,7 +5,7 @@ import './modules/form';
 import splitToLinesAndFadeUp from './modules/effects/splitLinesAndFadeUp';
 import { lenis } from './modules/scroll/leniscroll';
 import Swal from 'sweetalert2';
-
+import './modules/animations';
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
     e.preventDefault();

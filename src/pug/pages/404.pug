@@ -10,20 +10,16 @@ block scripts
   script(src='./assets/scripts/index.bundle.js')
 
 block content
-  .page404
+  .page404.container
     .page404__img
-      img(src="./assets/images/index/sketch-desktop.jpg", alt="", srcset="")
+      img(src="./assets/images/404.png", alt="404")
     .page404__text
-      .page404__title 404
-      .text-style-1920-h-1.text-color-body-description Упс, щось пішло не так...
+      .page404__title.d-fz-42.line-h-125.default-font2.mob-fz-28 Ой! Сторінки не знайдено
+      .page404__descr.d-fz-21.line-h-160.default-font2.mob-fz-16 Ми не змогли знайти сторінку, яку ви шукали. <br> Можливо, вона була переміщена або її більше не існує.
       .page404__buttons
-        a(class="button-main" href="#")
-          span НАЗАД
-        a(class="button-main" href="#")
-          span НА ГОЛОВНУ
-  include ../includes/contact-screen.pug
-block footer
-  include ../includes/footer.pug
+        a(class="button2 button2--blue" href="/")
+          span Повернутись на головну
+  
 block header
   include ../includes/header.pug
 

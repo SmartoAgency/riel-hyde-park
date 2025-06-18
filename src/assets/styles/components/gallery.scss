@@ -40,7 +40,9 @@
             svg {
                 pointer-events: all;
                 cursor: pointer;
-
+                &.swiper-button-disabled {
+                pointer-events: none;
+            }
                 @media screen and (max-width:767px) {
                     width: 42px;
                     height: 42px;

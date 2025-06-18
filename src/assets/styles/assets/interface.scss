@@ -9,6 +9,10 @@
 
   .page__content {
     flex-grow: 1;
+        max-width: 100vw;
+        @include from (768px) {
+          overflow: hidden;
+        }
   }
 
   .page__footer-wrapper {
