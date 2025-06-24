@@ -1,5 +1,6 @@
 .plannings {
     overflow: hidden;
+    max-width: 100vw;
     background-color: var(--white);
     padding-top: var(--section-v-offset);
     padding-bottom: var(--section-v-offset);
@@ -8,7 +9,8 @@
         @include row-flex;
         align-items: center;
         row-gap: pxInVh(60);
-
+        margin-left: 0;
+        margin-right: 0;
         @media screen and (max-width:767px) {
             row-gap: 24px;
             &>button {

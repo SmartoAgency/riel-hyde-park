@@ -8,6 +8,8 @@
 }
 
 .characteristics {
+    max-width: 100vw;
+    overflow: hidden;
     padding-top: var(--section-v-offset);
     padding-bottom: var(--section-v-offset);
     background-color: white;
@@ -31,6 +33,7 @@
         @include shift(0);
         @include size-xs(12);
         @include shift-xs(0);
+        white-space: nowrap;
     }
 
     &__list {

@@ -3,6 +3,7 @@
     padding-top: pxInVh(100);
     padding-bottom: pxInVh(170);
     max-width: 100vw;
+    overflow: hidden;
     @include to(767px){
         padding-top: 58px;
         padding-bottom: var(--section-v-offset);
@@ -90,7 +91,8 @@
         @include size-xs(12);
         @include shift-xs(0);
         @include to(767px){
-        order:1;}
+        order:-1;
+    white-space: nowrap;}
     }
     .button2 {
         @include to(767px){
@@ -114,4 +116,7 @@
             width: max-content;
         }
     }
+}
+.lower-case {
+    text-transform: lowercase;
 }

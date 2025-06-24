@@ -23,15 +23,23 @@ const slider = new Swiper('[data-slides-slider]', {
     prevEl: '[data-slides-slider-prev]',
   },
   on: {
-    init: function() {
-      handleIframes(this); // Запускаємо для першого активного слайду
-    },
-    slideChange: function() {
-      handleIframes(this);
-    },
+    // init: function() {
+    //   handleIframes(this); // Запускаємо для першого активного слайду
+    // },
+    // slideChange: function() {
+    //   handleIframes(this);
+    // },
   },
 });
 
+document.querySelectorAll('.js-vr-play').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    
+    handleIframes(slider);
+  e.target.closest(".js-vr-play--wrap").classList.add('hidden');
+  })
+    
+})
 function handleIframes(swiper) {
   swiper.slides.forEach((slide, index) => {
     const iframe = slide.querySelector('iframe');

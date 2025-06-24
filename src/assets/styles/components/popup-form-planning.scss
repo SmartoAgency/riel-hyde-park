@@ -39,13 +39,14 @@
     &__form-wrap {
         overflow-y: auto;
         overflow-x: hidden;
-        max-height: calc(100svh - 123px);
+        max-height: calc(100svh - 163px);
         background-color: #fff;
         ;
         padding: 60px;
 
         @include to(767px) {
             padding: 16px;
+            max-height: calc(100svh - 123px);
         }
     }
 

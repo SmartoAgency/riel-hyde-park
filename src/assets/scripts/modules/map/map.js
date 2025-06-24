@@ -14,8 +14,8 @@ export default async function googleMap() {
 
     return new Promise((resolve, reject) => {
       const script = document.createElement('script');
-      const key = ''; // 🔑 Підстав сюди свій ключ
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&language=ua`;
+       const key = document.querySelector('.map').dataset.api; // 🔑 Підстав сюди свій ключ
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&language=ua`; 
       script.async = true;
       script.defer = true;
 
