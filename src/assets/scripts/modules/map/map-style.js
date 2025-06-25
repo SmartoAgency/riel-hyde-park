@@ -1,5 +1,5 @@
 export default function mapStyle() {
-  return [
+  return (
     [
       { elementType: 'geometry', stylers: [{ color: '#002E52' }] },
       { elementType: 'labels.text.fill', stylers: [{ visibility: 'off' }] },
@@ -54,6 +54,6 @@ export default function mapStyle() {
         elementType: 'labels.icon',
         stylers: [{ visibility: 'off' }],
       },
-    ],
-  ];
+    ]
+  )
 }
