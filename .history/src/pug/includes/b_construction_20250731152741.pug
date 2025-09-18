@@ -104,31 +104,10 @@
         option(value="2024") 2024
         option(value="2023") 2023
         option(value="2022") 2022
-      select.select(data-construction-filter="que" data-lenis-prevent)
-        option(value="1") 1
-        option(value="2") 2
     .construction__slider.swiper-container(data-construction-slider)
       .swiper-wrapper
         each val in [1,2,3,4,5,6,6,6,6,6,6,6]
-          .swiper-slide.construction-card(data-construction-card data-year="2024" data-month=val data-que="1")
-            .construction-card__top 12.#{val}.2024
-            .construction-card__image
-              .construction-card__image-wrap
-                //- if val%2 === 0
-                //-   .construction-card__video-play(data-popup-video="#")
-                //-     <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                //-       <g clip-path="url(#clip0_59_511)">
-                //-       <path d="M11.1212 4.92738C12.2929 5.53242 12.2929 7.08084 11.1212 7.68588L2.56931 12.1011C1.42004 12.6945 0 11.9322 0 10.7219V1.89139C0 0.681094 1.42004 -0.0811911 2.56931 0.512168L11.1212 4.92738Z" fill="#F8F7F3"/>
-                //-       </g>
-                //-       <defs>
-                //-       <clipPath id="clip0_59_511">
-                //-       <rect width="12" height="12" fill="white" transform="translate(0 0.306641)"/>
-                //-       </clipPath>
-                //-       </defs>
-                //-     </svg>
-
-                img(src="./assets/images/construction/image1.jpg", alt="")
-          .swiper-slide.construction-card(data-construction-card data-year="2024" data-month=1 data-que="2")
+          .swiper-slide.construction-card(data-construction-card data-year="2024" data-month=val)
             .construction-card__top 12.#{val}.2024
             .construction-card__image
               .construction-card__image-wrap
